@@ -39,7 +39,6 @@ public class MixedFraction extends Fraction {
     public MixedFraction(Fraction fraction) {
     }
 
-
     /**
      * Method to return the mixed fraction as a string.*/
     /*

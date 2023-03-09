@@ -151,6 +151,8 @@
  */
 package prog2.pregroup01;
 
+import prog2.midgroup01.MixedFraction;
+
 import java.util.Scanner;
 
 public class FractionArithmetic {
@@ -219,8 +221,8 @@ public class FractionArithmetic {
            and exit the program.
      */
     public static void run() {
-        Fraction fraction1 = new Fraction();
-        Fraction fraction2 = new Fraction();
+        MixedFraction fraction1 = new MixedFraction();
+        MixedFraction fraction2 = new MixedFraction();
         int choiceLowerLimit = 1;
         showIntroduction();
 
@@ -388,19 +390,28 @@ public class FractionArithmetic {
        8. Declare "fraction" as a new Fraction variable with int numerator and int denominator.
        9. Return the Fraction variable "fraction".
      */
-    public static Fraction requestFraction() {
+    public static MixedFraction requestFraction() {
+        int wholeNumber = 0;
         int numerator = 0;
         int denominator = 0;
+        String errorMessage = "Please enter a valid number.";
 
         boolean pFlag;
         do {
             try {
                 pFlag = false;
+                do {
+                    System.out.print("Enter the whole number for the fraction: ");
+                    wholeNumber = Integer.parseInt(keyboard.nextLine());
+                    if (wholeNumber < 0) {
+                        System.out.println(errorMessage);
+                    }
+                } while(wholeNumber <0);
                 System.out.print("Enter the numerator for the fraction: ");
                 numerator = Integer.parseInt(keyboard.nextLine());
             } catch (NumberFormatException var5) {
                 pFlag = true;
-                System.out.println("Please enter a valid number.");
+                System.out.println(errorMessage);
             }
         } while(pFlag);
 
@@ -413,11 +424,11 @@ public class FractionArithmetic {
                     System.out.println("Invalid input! Any number divided by zero is undefined.");
             } catch (NumberFormatException var4) {
                 pFlag = true;
-                System.out.println("Please enter a valid number.");
+                System.out.println(errorMessage);
             }
         } while(pFlag || denominator == 0);
 
-        Fraction fraction = new Fraction(numerator, denominator);
+        MixedFraction fraction = new MixedFraction(wholeNumber,numerator, denominator);
         return fraction;
     } // end of requestFraction method
 
@@ -434,9 +445,9 @@ public class FractionArithmetic {
        7. Invoke the pressKey method.
        8. Return the Fraction variable "fraction1".
      */
-    public static Fraction requestFraction1() {
+    public static MixedFraction requestFraction1() {
         System.out.println("\nYou are now entering the value of Fraction 1.");
-        Fraction fraction1 = requestFraction();
+        MixedFraction fraction1 = requestFraction();
         double decimalEq1 = fraction1.decimalEquivalent();
         System.out.println("Value of Fraction 1: " + fraction1 + " or " + decimalEq1 + ".");
         input1Exists = true;
@@ -457,9 +468,9 @@ public class FractionArithmetic {
        7. Invoke the pressKey method.
        8. Return the Fraction variable "fraction2".
      */
-    public static Fraction requestFraction2() {
+    public static MixedFraction requestFraction2() {
         System.out.println("\nYou are now entering the value of Fraction 2.");
-        Fraction fraction2 = requestFraction();
+        MixedFraction fraction2 = requestFraction();
         double decimalEq2 = fraction2.decimalEquivalent();
         System.out.println("Value of Fraction 2: " + fraction2 + " or " + decimalEq2 +".");
         input2Exists = true;
