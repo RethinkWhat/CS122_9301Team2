@@ -7,8 +7,12 @@ public class MixedFraction extends Fraction {
     // Variable to hold the whole number of the mixed fraction
     private int wholeNumber;
 
-    // Default constructor
-    public MixedFraction() {}
+    /**
+     * This will become the default constructor because it has no arguments.
+     */
+    public MixedFraction() {
+        super();
+    }
 
     /**
      * Constructor to handle passed in whole number and Fraction object .*/
