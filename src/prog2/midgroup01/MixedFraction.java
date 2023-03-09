@@ -42,7 +42,6 @@ public class MixedFraction extends Fraction {
      */
     public MixedFraction(Fraction fraction) {
         super (fraction.getNumerator(), fraction.getDenominator());
-
     }
 
     /**
