@@ -38,8 +38,6 @@ public class MixedFraction extends Fraction {
 
     /**
      * Constructor that is receiving a given fraction.
-     *
-     * testiestjesitnesitesntiesntiesnt
      * @param fraction
      */
     public MixedFraction(Fraction fraction) {
