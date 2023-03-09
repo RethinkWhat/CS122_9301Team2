@@ -36,7 +36,13 @@ public class MixedFraction extends Fraction {
         this.wholeNumber = wholeNumber;
     }
 
+    /**
+     * Constructor that is receiving a given fraction.
+     * @param fraction
+     */
     public MixedFraction(Fraction fraction) {
+        super (fraction.getNumerator(), fraction.getDenominator());
+
     }
 
     /**
@@ -51,4 +57,25 @@ public class MixedFraction extends Fraction {
 
 
 
+}
+// this method is used to compute improper to mixed fraction
+/**
+Algorithm: 
+1. Divide the numerator by the denominator to get the whole part.
+2. Calculate the remainder by taking the numerator modulo the denominator.
+3. If the remainder is negative and the whole part is positive, adjust the whole part down by one and add the denominator to the remainder.
+4. Set the numerator to the remainder and the denominator to the absolute value of the original denominator.
+5. Print the whole part, numerator, and denominator in the format "wholePart numerator/denominator".
+ */
+public void improperToMixedFraction() { // GNuarin(03.09) this is for the improper to mixed
+        int wholePart = numerator / denominator;
+        int remainder = numerator % denominator;
+        if (remainder < 0 && wholePart > 0) {
+            wholePart--; // adjust the whole part if the remainder is negative
+            remainder += denominator;
+        }
+        numerator = remainder;
+        denominator = Math.abs(denominator);
+        System.out.println(wholePart + " " + numerator + "/" + denominator);
+    }
 }
