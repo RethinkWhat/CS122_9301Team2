@@ -12,6 +12,7 @@ public class MixedFraction extends Fraction {
      */
     public MixedFraction() {
         super();
+        this.wholeNumber = 0;
     }
 
     /**
