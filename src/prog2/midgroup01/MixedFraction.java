@@ -61,6 +61,20 @@ public class MixedFraction extends Fraction {
 
 
 }
+
+    /**
+     Algorithm:
+     1.
+     2.
+     3.
+     4.
+     */
+    private static Fraction mixedFractionToImproper(int whole, Fraction fraction) {
+        int numerator = whole * fraction.getDenominator() + fraction.getNumerator();
+        int denominator = fraction.getDenominator();
+        return new Fraction(numerator, denominator);
+    }
+    
 // this method is used to compute improper to mixed fraction
 /**
 Algorithm: 
