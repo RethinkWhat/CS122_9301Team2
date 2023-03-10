@@ -70,15 +70,15 @@ Algorithm:
 4. Set the numerator to the remainder and the denominator to the absolute value of the original denominator.
 5. Print the whole part, numerator, and denominator in the format "wholePart numerator/denominator".
  */
-public void improperToMixedFraction() { // GNuarin(03.09) this is for the improper to mixed
-        int wholePart = numerator / denominator;
-        int remainder = numerator % denominator;
+private void improperToMixedFraction() { // GNuarin(03.09) this is for the improper to mixed
+        int wholePart = this.getNumerator()/ this.getDenominator();
+        int remainder = this.getNumerator() % this.getDenominator();
         if (remainder < 0 && wholePart > 0) {
             wholePart--; // adjust the whole part if the remainder is negative
-            remainder += denominator;
+            remainder += this.getDenominator();
         }
-        numerator = remainder;
-        denominator = Math.abs(denominator);
-        System.out.println(wholePart + " " + numerator + "/" + denominator);
+        int getNumerator = remainder;
+        int getDenominator = Math.abs(this.getDenominator());
+        System.out.println(wholePart + " " + this.getNumerator() + "/" + this.getDenominator());
     }
 }
