@@ -12,6 +12,7 @@ public class MixedFraction extends Fraction {
      */
     public MixedFraction() {
         super();
+        this.wholeNumber = 0;
     }
 
     /**
@@ -57,8 +58,6 @@ public class MixedFraction extends Fraction {
     public String toString() {
         return this.wholeNumber + " " + this.getNumerator() + "/" + this.getDenominator();
     }
-
-
 
 }
 
