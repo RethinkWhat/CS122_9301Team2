@@ -46,7 +46,7 @@ public class MixedFraction extends Fraction {
      * @param fraction
      */
     public MixedFraction(Fraction fraction) {
-        super (fraction.getNumerator(), fraction.getDenominator());
+        super(fraction.getNumerator(), fraction.getDenominator());
     }
 
     /**
