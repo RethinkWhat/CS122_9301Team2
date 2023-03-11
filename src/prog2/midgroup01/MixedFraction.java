@@ -119,6 +119,22 @@ public class MixedFraction extends Fraction {
 
     }
 
+
+    /**
+     * Divides a mixed fraction to a fraction
+     * @param other
+     * */
+    /*
+     * Algorithm:
+     *      1. Create a new MixedFraction object called quotient.
+     *      2. Convert the current MixedFraction to an improper fraction called fraction1.
+     *      3. Get the numerator and denominator of the other Fraction.
+     *      4. Calculate the numerator and denominator of the quotient as follows:
+     *              quotient numerator = fraction1 numerator * other denominator
+     *              quotient denominator = fraction1 denominator * other numerator
+     *      5. Convert quotient to a mixed fraction using the toMixedFraction method.
+     *      6. Return the quotient mixed fraction.
+    */
     public MixedFraction divideByOne(Fraction other) {
         MixedFraction quotient = new MixedFraction();
         Fraction fraction1 = toFraction();
@@ -130,6 +146,23 @@ public class MixedFraction extends Fraction {
 
         return quotient;
     }
+
+    /**
+     * Divides two mixed fractions
+     * @param other
+     * */
+    /*
+     * Algorithm:
+     *      1. If other is an instance of Fraction, then call divideByOne
+     *         method passing other as an argument and return the result.
+     *      2. Create a new MixedFraction object named quotient.
+     *      3. Convert this and other to Fraction objects named fraction1 and fraction2, respectively.
+     *      4. Calculate the numerator and denominator of the quotient object by
+     *         multiplying fraction1 numerator with fraction2 denominator and
+     *         multiplying fraction1 denominator with fraction2 numerator.
+     *      5. Convert the quotient object to MixedFraction and assign it to quotient.
+     *      6. Return quotient.
+    */
     public MixedFraction divideByTwo(MixedFraction other){
         if (other instanceof Fraction) {
             return divideByOne((Fraction) other);
@@ -150,18 +183,17 @@ public class MixedFraction extends Fraction {
 
     /**
      * Multiplies a mixed fraction to a fraction
-     *
-     * Algorithm:
-     * 1. Convert the mixed fraction to an improper fraction using the toFraction method
-     * 2. Multiply the numerator of the improper fraction by the numerator of the given fraction to get the new numerator
-     * 3. Multiply the denominator of the improper fraction by the denominator of the given fraction to get the new denominator
-     * 4. Create a new MixedFraction object using the toMixedFraction method
-     * 5. Return the new MixedFraction object as the product
-     *
      * @param other
      * @return the {@code product} of the mixed fraction and a fraction
-     *
      * */
+    /*
+     * Algorithm:
+     *      1. Convert the mixed fraction to an improper fraction using the toFraction method
+     *      2. Multiply the numerator of the improper fraction by the numerator of the given fraction to get the new numerator
+     *      3. Multiply the denominator of the improper fraction by the denominator of the given fraction to get the new denominator
+     *      4. Create a new MixedFraction object using the toMixedFraction method
+     *      5. Return the new MixedFraction object as the product
+    * */
     public MixedFraction multiplyByOne(Fraction other) {
         MixedFraction product = new MixedFraction();
         Fraction fraction1 = toFraction();
@@ -176,10 +208,21 @@ public class MixedFraction extends Fraction {
 
     /**
      * Multiplies two mixed fractions
-     *
      * @param other
      * @return a product of this mixed fraction and another mixed fraction
      */
+    /*
+     * Algorithm:
+     *      1. If other is an instance of Fraction, then call multiplyByOne
+     *         method passing other as an argument and return the result.
+     *      2. Create a new MixedFraction object named product.
+     *      3. Convert this and other to Fraction objects named fraction1 and fraction2, respectively.
+     *      4. Calculate the numerator and denominator of the product object by
+     *         multiplying fraction1 numerator with fraction2 numerator and
+     *         multiplying fraction1 denominator with fraction2 denominator.
+     *      5. Convert the product object to MixedFraction and assign it to product.
+     *      6. Return product.
+    */
     public MixedFraction multiplyByTwo(MixedFraction other) {
         if (other instanceof Fraction) {
             return multiplyByOne((Fraction) other);
@@ -201,6 +244,24 @@ public class MixedFraction extends Fraction {
     /**
      * Temporary method for mixed fraction to improper fraction
      * */
+    /*
+    * Algorithm:
+    *       1. Initialize a new Fraction object result.
+    *       2. Calculate the numerator of the improper fraction by
+    *          multiplying the whole number with the denominator and adding the numerator.
+    *       3. Set the denominator of the improper fraction to the same value as the mixed fraction.
+    *       4. Determine the sign of the improper fraction by multiplying the sign of
+    *          the numerator with the sign of the denominator.
+    *       5. Take the absolute value of the numerator and denominator.
+    *       6. Calculate the whole number of the mixed fraction by dividing the numerator by the
+    *          denominator, and multiplying the result by the sign calculated in step 4.
+    *       7. Calculate the new numerator of the improper fraction by taking the
+    *          remainder of the numerator divided by the denominator, and multiplying
+    *          the result by the sign calculated in step 4.
+    *       8. Set the numerator and denominator of the Fraction object result to the
+    *          values calculated in steps 7 and 5, respectively.
+    *       9. Return the result Fraction object.
+    * */
     public Fraction toFraction() {
         Fraction result = new Fraction();
         int numerator = getWholeNumber() * getDenominator() + getNumerator();
@@ -223,6 +284,16 @@ public class MixedFraction extends Fraction {
     /**
      * Temporary method for improper to mixed fraction
      * */
+    /*
+    * Algorithm:
+    *       1. Get the numerator and denominator of the fraction.
+    *       2. Calculate the whole number by dividing the numerator by
+    *          the denominator and rounding down to the nearest integer.
+    *       3. Calculate the remainder by taking the numerator modulo the denominator.
+    *       4. Create a new MixedFraction object with the calculated whole number, remainder,
+    *          and denominator as its parameters.
+    *       5. Return the new MixedFraction object.
+    * */
     public MixedFraction toMixedFraction() {
         int numerator = this.getNumerator();
         int denominator = this.getDenominator();
@@ -230,9 +301,6 @@ public class MixedFraction extends Fraction {
         numerator = numerator % denominator;
         return new MixedFraction(wholeNumber, numerator, denominator);
     }
-
-
-
 
     /**
      * Algorithm:
