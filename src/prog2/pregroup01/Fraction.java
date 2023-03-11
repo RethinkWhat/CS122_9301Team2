@@ -1,32 +1,28 @@
 /**
  *  〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
- *
- *
- *          UML Diagram:
- *          +------------------------------------------------------------------+
- *          |                              Fraction                            |
- *          +------------------------------------------------------------------+
- *          | -denominator: int                                                |
- *          | -numerator: int                                                  |
- *          +------------------------------------------------------------------+
- *          | +Fraction()                                                      |
- *          | +Fraction(numerator: int, denominator: int)                      |
- *          | +getNumerator(): int                                             |
- *          | +setNumerator(numerator: int): void                              |
- *          | +getDenominator(): int                                           |
- *          | +setDenominator(denominator: int): void                          |
- *          | +toString(): String                                              |
- *          | +decimalEquivalent(): double                                     |
- *          | +multiplyFraction(otherFraction: Fraction): Fraction             |
- *          | +divideFraction(otherFraction: Fraction): Fraction               |
- *          | +addFraction(otherFraction: Fraction): Fraction                  |
- *          | +subtractFraction(otherFraction: Fraction): Fraction             |
- *          | +reduceFraction(): void                                          |
- *          | +computeGCD(firstNumber: int, secondNumber: int): int            |
- *          | +leastCommonMultiple(firstNumber: int, secondNumber: int): int   |
- *          +------------------------------------------------------------------+
- *
- *
+ *  UML Diagram:
+ *  +------------------------------------------------------------------+
+ *  |                              Fraction                            |
+ *  +------------------------------------------------------------------+
+ *  | -denominator: int                                                |
+ *  | -numerator: int                                                  |
+ *  +------------------------------------------------------------------+
+ *  | +Fraction()                                                      |
+ *  | +Fraction(numerator: int, denominator: int)                      |
+ *  | +getNumerator(): int                                             |
+ *  | +setNumerator(numerator: int): void                              |
+ *  | +getDenominator(): int                                           |
+ *  | +setDenominator(denominator: int): void                          |
+ *  | +toString(): String                                              |
+ *  | +decimalEquivalent(): double                                     |
+ *  | +multiplyFraction(otherFraction: Fraction): Fraction             |
+ *  | +divideFraction(otherFraction: Fraction): Fraction               |
+ *  | +addFraction(otherFraction: Fraction): Fraction                  |
+ *  | +subtractFraction(otherFraction: Fraction): Fraction             |
+ *  | +reduceFraction(): void                                          |
+ *  | +computeGCD(firstNumber: int, secondNumber: int): int            |
+ *  | +leastCommonMultiple(firstNumber: int, secondNumber: int): int   |
+ *  +------------------------------------------------------------------+
  *  〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
  */
 
@@ -96,8 +92,9 @@ public class Fraction {
      * Method to return the fraction as a string.*/
     /*
         Algorithm:
-        1. Return the numerator and the denominator as a single string.
+        1. Return the the numerator and the denominator as a single string.
     */
+
     public String toString() {
         return this.numerator + "/" + this.denominator;
     }
