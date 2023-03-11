@@ -91,6 +91,34 @@ public class MixedFraction extends Fraction {
         return obj;
     }
 
+    public MixedFraction add(Fraction other){
+        MixedFraction sum = new MixedFraction();
+        int commonDenominator = this.leastCommonMultiple(this.getDenominator(), other.getDenominator());
+        int numerator1 = this.getNumerator() * (commonDenominator / this.getDenominator());
+        int numerator2 = other.getNumerator() * (commonDenominator / other.getDenominator());
+
+        sum.setNumerator(numerator1 + numerator2);
+        sum.setDenominator(commonDenominator);
+        sum.reduceFraction();
+
+        return sum;
+
+    }
+
+    public MixedFraction subtract(Fraction other){
+        MixedFraction difference = new MixedFraction();
+        int commonDenominator = this.leastCommonMultiple(this.getDenominator(), other.getDenominator());
+        int numerator1 = this.getNumerator() * (commonDenominator / this.getDenominator());
+        int numerator2 = other.getNumerator() * (commonDenominator / other.getDenominator());
+
+        difference.setNumerator(numerator1 - numerator2);
+        difference.setDenominator(commonDenominator);
+        difference.reduceFraction();
+
+        return difference;
+
+    }
+
     public MixedFraction divideByOne(Fraction other) {
         MixedFraction quotient = new MixedFraction();
         Fraction fraction1 = toFraction();
