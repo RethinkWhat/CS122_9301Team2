@@ -101,10 +101,14 @@ public class MixedFraction extends Fraction {
      * Multiplies a mixed fraction to a fraction
      *
      * Algorithm:
-     * 1.
-     *
+     * 1. Convert the mixed fraction to an improper fraction using the toFraction method
+     * 2. Multiply the numerator of the improper fraction by the numerator of the given fraction to get the new numerator
+     * 3. Multiply the denominator of the improper fraction by the denominator of the given fraction to get the new denominator
+     * 4. Create a new MixedFraction object using the toMixedFraction method
+     * 5. Return the new MixedFraction object as the product
      *
      * @param other
+     * @return the {@code product} of the mixed fraction and a fraction
      *
      * */
     public MixedFraction multiplyByOne(Fraction other) {
