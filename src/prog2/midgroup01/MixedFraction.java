@@ -91,6 +91,120 @@ public class MixedFraction extends Fraction {
         return obj;
     }
 
+    public MixedFraction divideByOne(Fraction other) {
+        MixedFraction quotient = new MixedFraction();
+        Fraction fraction1 = toFraction();
+
+        quotient.setNumerator(fraction1.getNumerator() * other.getDenominator());
+        quotient.setDenominator(fraction1.getDenominator() * other.getNumerator());
+
+        quotient = quotient.toMixedFraction();
+
+        return quotient;
+    }
+    public MixedFraction divideByTwo(MixedFraction other){
+        if (other instanceof Fraction) {
+            return divideByOne((Fraction) other);
+        }
+
+        MixedFraction quotient = new MixedFraction();
+        Fraction fraction1 = toFraction();
+        Fraction fraction2 = other.toFraction();
+
+        quotient.setNumerator(fraction1.getNumerator() * fraction2.getDenominator());
+        quotient.setDenominator(fraction1.getDenominator() * fraction2.getNumerator());
+
+        quotient = quotient.toMixedFraction();
+
+        return quotient;
+
+    }
+
+    /**
+     * Multiplies a mixed fraction to a fraction
+     *
+     * Algorithm:
+     * 1. Convert the mixed fraction to an improper fraction using the toFraction method
+     * 2. Multiply the numerator of the improper fraction by the numerator of the given fraction to get the new numerator
+     * 3. Multiply the denominator of the improper fraction by the denominator of the given fraction to get the new denominator
+     * 4. Create a new MixedFraction object using the toMixedFraction method
+     * 5. Return the new MixedFraction object as the product
+     *
+     * @param other
+     * @return the {@code product} of the mixed fraction and a fraction
+     *
+     * */
+    public MixedFraction multiplyByOne(Fraction other) {
+        MixedFraction product = new MixedFraction();
+        Fraction fraction1 = toFraction();
+
+        product.setNumerator(fraction1.getNumerator() * other.getNumerator());
+        product.setDenominator(fraction1.getDenominator() * other.getDenominator());
+
+        product = product.toMixedFraction();
+
+        return product;
+    }
+
+    /**
+     * Multiplies two mixed fractions
+     *
+     * @param other
+     * @return a product of this mixed fraction and another mixed fraction
+     */
+    public MixedFraction multiplyByTwo(MixedFraction other) {
+        if (other instanceof Fraction) {
+            return multiplyByOne((Fraction) other);
+        }
+
+        MixedFraction product = new MixedFraction();
+        Fraction fraction1 = toFraction();
+        Fraction fraction2 = other.toFraction();
+
+        product.setNumerator(fraction1.getNumerator() * fraction2.getNumerator());
+        product.setDenominator(fraction1.getDenominator() * fraction2.getDenominator());
+
+        product = product.toMixedFraction();
+
+        return product;
+    }
+
+
+    /**
+     * Temporary method for mixed fraction to improper fraction
+     * */
+    public Fraction toFraction() {
+        Fraction result = new Fraction();
+        int numerator = getWholeNumber() * getDenominator() + getNumerator();
+        int denominator = getDenominator();
+        int sign = Integer.signum(numerator) * Integer.signum(denominator);
+
+        numerator = Math.abs(numerator);
+        denominator = Math.abs(denominator);
+
+        int wholeNumber = sign * (numerator / denominator);
+
+        numerator = sign * (numerator % denominator);
+
+        result.setNumerator(numerator);
+        result.setDenominator(denominator);
+
+        return result;
+    }
+
+    /**
+     * Temporary method for improper to mixed fraction
+     * */
+    public MixedFraction toMixedFraction() {
+        int numerator = this.getNumerator();
+        int denominator = this.getDenominator();
+        int wholeNumber = numerator / denominator;
+        numerator = numerator % denominator;
+        return new MixedFraction(wholeNumber, numerator, denominator);
+    }
+
+
+
 
     /**
      * Algorithm:
