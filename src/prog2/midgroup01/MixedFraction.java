@@ -172,10 +172,10 @@ public class MixedFraction extends Fraction {
 
     /**
      * Algorithm:
-     * 1.
-     * 2.
-     * 3.
-     * 4.
+     * 1.Multiply the whole number by the denominator of the fraction.
+     * 2.Add the numerator of the fraction to the result of step 1 to get the total numerator of the improper fraction.
+     * 3.The denominator of the improper fraction is simply the same as the denominator of the original fraction.
+     * 4.Create a new Fraction object with the numerator and denominator calculated in steps 2 and 3.
      */
     public Fraction mixedFractionToImproper() {
         int numerator = this.getNumerator();
