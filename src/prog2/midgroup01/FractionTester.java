@@ -151,6 +151,7 @@
  */
 package prog2.midgroup01;
 
+import prog2.pregroup01.Fraction;
 import java.util.Scanner;
 
 public class FractionTester {
@@ -446,8 +447,9 @@ public class FractionTester {
     public static MixedFraction requestFraction1() {
         System.out.println("\nYou are now entering the value of Fraction 1.");
         MixedFraction fraction1 = requestFraction();
-        double decimalEq1 = fraction1.decimalEquivalent();
-        System.out.println("Value of Fraction 1: " + fraction1 + " or " + decimalEq1 + ".");
+        Fraction improper = fraction1.mixedFractionToImproper();
+        double decimalEq1 = improper.decimalEquivalent();
+        System.out.println("Value of Fraction 1: " + fraction1 + " or " + improper + " or " + decimalEq1 + ".");
         input1Exists = true;
         pressKey();
         return fraction1;
@@ -469,8 +471,9 @@ public class FractionTester {
     public static MixedFraction requestFraction2() {
         System.out.println("\nYou are now entering the value of Fraction 2.");
         MixedFraction fraction2 = requestFraction();
-        double decimalEq2 = fraction2.decimalEquivalent();
-        System.out.println("Value of Fraction 2: " + fraction2 + " or " + decimalEq2 +".");
+        Fraction improper = fraction2.mixedFractionToImproper();
+        double decimalEq2 = improper.decimalEquivalent();
+        System.out.println("Value of Fraction 2: " + fraction2 + " or " + improper + " or " + decimalEq2 +".");
         input2Exists = true;
         pressKey();
         return fraction2;
@@ -486,10 +489,10 @@ public class FractionTester {
           of the sum of the two fractions.
        4. Print the sum value of the two fractions and its decimal equivalent.
      */
-    public static void addition(Fraction fraction1, Fraction otherFraction) {
-        Fraction sum = fraction1.addFraction(otherFraction);
+    public static void addition(MixedFraction fraction1, MixedFraction otherFraction) {
+        MixedFraction sum = fraction1.add(otherFraction);
         double sumDecimal = sum.decimalEquivalent();
-        System.out.println("" + fraction1 + " plus " + otherFraction + " = " + sum + " ≈ " + sumDecimal + ".");
+        System.out.println("" + fraction1 + " plus " + otherFraction + " = " + sum.toMixedFraction() + " ≈ " + sumDecimal + ".");
     } // end of addition method
 
     /**
@@ -502,10 +505,10 @@ public class FractionTester {
           of the difference of the two fractions.
        4. Print the difference value of the two fractions and its decimal equivalent.
      */
-    public static void subtraction(Fraction fraction1, Fraction otherFraction) {
-        Fraction difference = fraction1.subtractFraction(otherFraction);
+    public static void subtraction(MixedFraction fraction1, MixedFraction otherFraction) {
+        MixedFraction difference = fraction1.subtract(otherFraction);
         double differenceDecimal = difference.decimalEquivalent();
-        System.out.println("" + fraction1 + " minus " + otherFraction + " = " + difference +
+        System.out.println("" + fraction1 + " minus " + otherFraction + " = " + difference.toMixedFraction() +
                 " ≈ " + differenceDecimal +".");
     } // end of subtraction method
 
@@ -519,10 +522,11 @@ public class FractionTester {
           of the product of the two fractions.
        4. Print the product value of the two fractions and its decimal equivalent.
      */
-    public static void multiplication(Fraction fraction1, Fraction otherFraction) {
-        Fraction product = fraction1.multiplyFraction(otherFraction);
-        double productDecimal = product.decimalEquivalent();
-        System.out.println("" + fraction1 + " multiplied by " + otherFraction + " = " + product +
+    public static void multiplication(MixedFraction fraction1, MixedFraction otherFraction) {
+        MixedFraction product = fraction1.multiply(otherFraction);
+        product.reduceFraction();
+        double productDecimal = product.mixedFractionToImproper().decimalEquivalent();
+        System.out.println(" " + fraction1 + " multiplied by " + otherFraction + " = " + product +
                 " ≈ " + productDecimal + ".");
     } // end of multiplication method
 
@@ -536,10 +540,11 @@ public class FractionTester {
           of the quotient of the two fractions.
        4. Print the quotient value of the two fractions and its decimal equivalent.
      */
-    public static void division(Fraction fraction1, Fraction otherFraction) {
-        Fraction quotient = fraction1.divideFraction(otherFraction);
+    public static void division(MixedFraction fraction1, MixedFraction otherFraction) {
+        MixedFraction quotient = fraction1.divide(otherFraction);
+        quotient.reduceFraction();
         double quotientDecimal = quotient.decimalEquivalent();
-        System.out.println("" + fraction1 + " divided by " + otherFraction + " = " + quotient +
+        System.out.println(" " + fraction1 + " divided by " + otherFraction + " = " + quotient +
                 " ≈ " + quotientDecimal + ".");
     } // end of division method
 
@@ -553,10 +558,10 @@ public class FractionTester {
           of the lowest term of the fraction.
        4. Print the lowest term value of the fraction and its decimal equivalent.
      */
-    public static void reduce(Fraction fractionToBeReduced) {
+    public static void reduce(MixedFraction fractionToBeReduced) {
         System.out.print("\n" + fractionToBeReduced + " in lowest terms is ");
+        double decimal = fractionToBeReduced.mixedFractionToImproper().decimalEquivalent();
         fractionToBeReduced.reduceFraction();
-        double decimal = fractionToBeReduced.decimalEquivalent();
         System.out.println(fractionToBeReduced + " or " + decimal + ".");
     } // end of reduce method
 

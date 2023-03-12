@@ -92,7 +92,7 @@ public class Fraction {
      * Method to return the fraction as a string.*/
     /*
         Algorithm:
-        1. Return the the numerator and the denominator as a single string.
+        1. Return the numerator and the denominator as a single string.
     */
 
     public String toString() {
