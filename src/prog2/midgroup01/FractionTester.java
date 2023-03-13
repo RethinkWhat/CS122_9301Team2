@@ -153,6 +153,8 @@ package prog2.midgroup01;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.RoundRectangle2D;
+
 
 public class FractionTester extends JFrame {
 
@@ -186,7 +188,7 @@ public class FractionTester extends JFrame {
 
     }
 
-    public String invalidInput = "Invalid input. Accepted formats: 4 1/2, 2/4, 3.";
+    public String invalidInput = "Accepted formats: 4 1/2, 2/4, 3.";
     public String divisionBy0 = "Division by 0 not allowed.";
     public JTextField t1 = new JTextField(10);
     public JTextField t2 = new JTextField(10);
@@ -208,7 +210,7 @@ public class FractionTester extends JFrame {
 
     public FractionTester() {
         setBounds(210,210,280,400);
-        setLayout(new FlowLayout());
+        //setLayout(new FlowLayout());
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -216,61 +218,84 @@ public class FractionTester extends JFrame {
         JLabel l1 = new JLabel(" Fraction Calculator");
         l1.setFont(new Font("Arial", Font.BOLD, 20));
         add(l1);
+        l1.setBounds(42,0,200,50);
 
 
         // Fraction 1
         JLabel f1 = new JLabel("Enter fraction 1: ");
         add(f1);
         add(t1);
+        f1.setBounds(20,50,200,20);
+        t1.setBounds(120,50,140,20);
 
         // Fraction 2
         JLabel f2 = new JLabel("Enter fraction 2: ");
         add(f2);
         add(t2);
+        f2.setBounds(20,80,200,20);
+        t2.setBounds(120,80,140,20);
 
         // Addition
         JButton add = new JButton("+");
         add(add);
+        add.setBounds(20,120,50,20);
 
         // Subtract
         JButton subtract = new JButton("-");
         add(subtract);
+        subtract.setBounds(85,120,50,20);
 
         // Multiply
         JButton multiply = new JButton("x");
         add(multiply);
+        multiply.setBounds(150,120,50,20);
 
         // Divide
         JButton divide = new JButton("/");
         add(divide);
+        divide.setBounds(215,120,50,20);
 
 
         // Results for Calculator
         JLabel results = new JLabel();
         add(results);
+        results.setBounds(20, 160,270,20);
 
         // Error for Calculator
         add(errorForCalculator);
         errorForCalculator.setForeground(Color.RED);
+        errorForCalculator.setBounds(20, 160,270,20);
+
+        // line
+        JLabel line = new JLabel("-----------------------------------");
+        add(line);
+        line.setBounds(0,175,500,50);
 
         // Reduce
         JLabel f3 = new JLabel("Reduce a Fraction");
         f3.setFont(new Font("Arial", Font.BOLD, 20));
         add(f3);
+        f3.setBounds(55,200,200,50);
 
         // TextBox for input
         JTextField t3 = new JTextField(10);
         JButton reduce = new JButton("reduce");
         add(t3);
         add(reduce);
+        t3.setBounds(17,250,140,20);
+        reduce.setBounds(165,250,50,20);
+
 
         //Results for reduce
         JLabel resultsForReduce = new JLabel();
-        add(resultsForReduce);
+            add(resultsForReduce);
+        resultsForReduce.setBounds(20,290,200,20);
 
         //Error for reduce
         add(errorForReduce);
+        add(errorForReduce);
         errorForReduce.setForeground(Color.RED);
+
 
         /** Event handler for addition */
         add.addActionListener(new ActionListener(){
