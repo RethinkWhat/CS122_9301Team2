@@ -156,21 +156,43 @@ import java.awt.event.*;
 
 public class FractionTester extends JFrame {
 
-    public void createGUI() {
+    public MixedFraction getUserInput(JTextField inputChoice, JLabel errorMessage) {
+        String input = inputChoice.getText();
+        String[] fractionString = new String[3];
+        int wholeNumber = 0;
+        int numerator, denominator;
+        MixedFraction fraction;
+
+        try {
+            fractionString = input.split(" |/");
+            denominator = Integer.valueOf(fractionString[2]);
+            numerator = Integer.valueOf(fractionString[1]);
+            wholeNumber = Integer.valueOf(fractionString[0]);
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            try {
+                fractionString = input.split("/");
+                numerator = Integer.valueOf(fractionString[0]);
+                denominator = Integer.valueOf(fractionString[1]);
+            }catch (ArrayIndexOutOfBoundsException x) {
+                wholeNumber = Integer.valueOf(input);
+                numerator = 0;
+                denominator = 1;
+            }
+        }
+        fraction = new MixedFraction(wholeNumber, numerator, denominator);
+        return (fraction);
 
     }
-    public String[] fraction1String = new String[3];
-    public String[] fraction2String = new String[3];
 
-    public int wholeNumber1, numerator1, denominator1;
-    public int wholeNumber2, numerator2, denominator2;
+    public JTextField t1 = new JTextField(10);
+    public JTextField t2 = new JTextField(10);
+
     MixedFraction fraction1, fraction2;
-    String input1, input2;
 
     /** Main method to invoke a method to run the application program.*/
     /*
        Algorithm:
-       1. Invoke the run method.
+       1. Call the FractionTester
      */
     public static void main(String[] args) {
         new FractionTester();
@@ -191,13 +213,11 @@ public class FractionTester extends JFrame {
 
         // Fraction 1
         JLabel f1 = new JLabel("Enter fraction 1: ");
-        JTextField t1 = new JTextField(10);
         add(f1);
         add(t1);
 
         // Fraction 2
         JLabel f2 = new JLabel("Enter fraction 2: ");
-        JTextField t2 = new JTextField(10);
         add(f2);
         add(t2);
 
@@ -237,96 +257,54 @@ public class FractionTester extends JFrame {
         JLabel resultsForReduce = new JLabel();
         add(resultsForReduce);
 
-        // Event handler for addition
+        /** Event handler for addition */
         add.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                input1 = t1.getText();
-                input2 = t2.getText();
-                fraction1String = input1.split(" |/");
-                wholeNumber1 = Integer.valueOf(fraction1String[0]);
-                numerator1 = Integer.valueOf(fraction1String[1]);
-                denominator1 = Integer.valueOf(fraction1String[2]);
-                fraction1 = new MixedFraction(wholeNumber1, numerator1, denominator1);
-                fraction2String = input2.split(" |/");
-                wholeNumber2 = Integer.valueOf(fraction2String[0]);
-                numerator2 = Integer.valueOf(fraction2String[1]);
-                denominator2 = Integer.valueOf(fraction2String[2]);
-                fraction2 = new MixedFraction(wholeNumber2, numerator2, denominator2);
+                fraction1 = getUserInput(t1, results);
+                fraction2 = getUserInput(t2, results);
                 MixedFraction sum = fraction1.add(fraction2);
                 double sumDecimal = sum.decimalEquivalent();
                 results.setText("Sum = " + sum.toMixedFraction() + " ≈ " + sumDecimal);
             }
         });
 
+        /** Event handler for subtraction */
         subtract.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                String input1 = t1.getText();
-                String input2 = t2.getText();
-                fraction1String = input1.split(" |/");
-                wholeNumber1 = Integer.valueOf(fraction1String[0]);
-                numerator1 = Integer.valueOf(fraction1String[1]);
-                denominator1 = Integer.valueOf(fraction1String[2]);
-                fraction1 = new MixedFraction(wholeNumber1, numerator1, denominator1);
-                fraction2String = input2.split(" |/");
-                wholeNumber2 = Integer.valueOf(fraction2String[0]);
-                numerator2 = Integer.valueOf(fraction2String[1]);
-                denominator2 = Integer.valueOf(fraction2String[2]);
-                fraction2 = new MixedFraction(wholeNumber2, numerator2, denominator2);
+                fraction1 = getUserInput(t1, results);
+                fraction2 = getUserInput(t2, results);
                 MixedFraction difference = fraction1.subtract(fraction2);
                 double differenceDecimal = difference.decimalEquivalent();
                 results.setText("Difference = " + difference.toMixedFraction() + " ≈ " + differenceDecimal);
             }
         });
 
+        /** Event handler for multiplication */
         multiply.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-               String input1 = t1.getText();
-               String input2 = t2.getText();
-               fraction1String = input1.split(" |/");
-               int wholeNumber1 = Integer.valueOf(fraction1String[0]);
-               int numerator1 = Integer.valueOf(fraction1String[1]);
-               int denominator1 = Integer.valueOf(fraction1String[2]);
-               MixedFraction fraction1 = new MixedFraction(wholeNumber1, numerator1, denominator1);
-               fraction2String = input2.split(" |/");
-               int wholeNumber2 = Integer.valueOf(fraction2String[0]);
-               int numerator2 = Integer.valueOf(fraction2String[1]);
-               int denominator2 = Integer.valueOf(fraction2String[2]);
-               MixedFraction fraction2 = new MixedFraction(wholeNumber2, numerator2, denominator2);
-               MixedFraction product = fraction1.multiply(fraction2);
-               double productDecimal = product.decimalEquivalent();
-               results.setText("Product = " + product.toMixedFraction() + " ≈ " + productDecimal);
+                fraction1 = getUserInput(t1, results);
+                fraction2 = getUserInput(t2, results);
+                MixedFraction product = fraction1.multiply(fraction2);
+                double productDecimal = product.decimalEquivalent();
+                results.setText("Product = " + product.toMixedFraction() + " ≈ " + productDecimal);
             }
         });
 
+        /** Event handler for division */
         divide.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                String input1 = t1.getText();
-                String input2 = t2.getText();
-                fraction1String = input1.split(" |/");
-                int wholeNumber1 = Integer.valueOf(fraction1String[0]);
-                int numerator1 = Integer.valueOf(fraction1String[1]);
-                int denominator1 = Integer.valueOf(fraction1String[2]);
-                MixedFraction fraction1 = new MixedFraction(wholeNumber1, numerator1, denominator1);
-                fraction2String = input2.split(" |/");
-                int wholeNumber2 = Integer.valueOf(fraction2String[0]);
-                int numerator2 = Integer.valueOf(fraction2String[1]);
-                int denominator2 = Integer.valueOf(fraction2String[2]);
-                MixedFraction fraction2 = new MixedFraction(wholeNumber2, numerator2, denominator2);
+                fraction1 = getUserInput(t1, results);
+                fraction2 = getUserInput(t2, results);
                 MixedFraction quotient = fraction1.divide(fraction2);
                 double quotientDecimal = quotient.decimalEquivalent();
                 results.setText("Quotient = " + quotient.toMixedFraction() + " ≈ " + quotientDecimal);
-
-        }
+            }
         });
 
+        /** Event handler for reduce fraction */
         reduce.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                String input = t3.getText();
-                fraction1String = input.split(" |/");
-                int wholeNumber = Integer.valueOf(fraction1String[0]);
-                int numerator = Integer.valueOf(fraction1String[1]);
-                int denominator = Integer.valueOf(fraction1String[2]);
-                MixedFraction fraction = new MixedFraction(wholeNumber, numerator, denominator);
+                MixedFraction fraction = getUserInput(t3, resultsForReduce);
                 double quotientFraction = fraction.mixedFractionToImproper().decimalEquivalent();
                 resultsForReduce.setText("Reduced = " + fraction.reduce() + " ≈ " +  quotientFraction);
             }
