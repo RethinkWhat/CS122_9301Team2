@@ -156,6 +156,8 @@ import java.awt.event.*;
 
 public class FractionTester extends JFrame {
 
+    /** Method to get user input */
+    // All the operations listeners below call this in order to accept input from user
     public MixedFraction getUserInput(JTextField inputChoice) {
         String input = inputChoice.getText();
         String[] fractionString = new String[3];
