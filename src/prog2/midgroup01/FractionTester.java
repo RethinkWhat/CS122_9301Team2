@@ -156,7 +156,7 @@ import java.awt.event.*;
 
 public class FractionTester extends JFrame {
 
-    public MixedFraction getUserInput(JTextField inputChoice, JLabel errorMessage) {
+    public MixedFraction getUserInput(JTextField inputChoice) {
         String input = inputChoice.getText();
         String[] fractionString = new String[3];
         int wholeNumber = 0;
@@ -184,8 +184,13 @@ public class FractionTester extends JFrame {
 
     }
 
+    public String invalidInput = "Invalid input. Accepted formats: 4 1/2, 2/4, 3.";
+    public String divisionBy0 = "Division by 0 not allowed.";
     public JTextField t1 = new JTextField(10);
     public JTextField t2 = new JTextField(10);
+
+    public JLabel errorForReduce = new JLabel();
+    public JLabel errorForCalculator = new JLabel();
 
     MixedFraction fraction1, fraction2;
 
@@ -242,6 +247,10 @@ public class FractionTester extends JFrame {
         JLabel results = new JLabel();
         add(results);
 
+        // Error for Calculator
+        add(errorForCalculator);
+        errorForCalculator.setForeground(Color.RED);
+
         // Reduce
         JLabel f3 = new JLabel("Reduce a Fraction");
         f3.setFont(new Font("Arial", Font.BOLD, 20));
@@ -257,56 +266,91 @@ public class FractionTester extends JFrame {
         JLabel resultsForReduce = new JLabel();
         add(resultsForReduce);
 
+        //Error for reduce
+        add(errorForReduce);
+        errorForReduce.setForeground(Color.RED);
+
         /** Event handler for addition */
         add.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                fraction1 = getUserInput(t1, results);
-                fraction2 = getUserInput(t2, results);
-                MixedFraction sum = fraction1.add(fraction2);
-                double sumDecimal = sum.decimalEquivalent();
-                results.setText("Sum = " + sum.toMixedFraction() + " ≈ " + sumDecimal);
+                try {
+                    fraction1 = getUserInput(t1);
+                    fraction2 = getUserInput(t2);
+                    MixedFraction sum = fraction1.add(fraction2);
+                    double sumDecimal = sum.decimalEquivalent();
+                    results.setText("Sum = " + sum.toMixedFraction() + " ≈ " + sumDecimal);
+                } catch(NumberFormatException except) {
+                    errorForCalculator.setText(invalidInput);
+                } catch (ArithmeticException arithExcept) {
+                    errorForCalculator.setText(divisionBy0);
+                }
             }
         });
 
         /** Event handler for subtraction */
         subtract.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                fraction1 = getUserInput(t1, results);
-                fraction2 = getUserInput(t2, results);
-                MixedFraction difference = fraction1.subtract(fraction2);
-                double differenceDecimal = difference.decimalEquivalent();
-                results.setText("Difference = " + difference.toMixedFraction() + " ≈ " + differenceDecimal);
+                try {
+                    fraction1 = getUserInput(t1);
+                    fraction2 = getUserInput(t2);
+                    MixedFraction difference = fraction1.subtract(fraction2);
+                    double differenceDecimal = difference.decimalEquivalent();
+                    results.setText("Difference = " + difference.toMixedFraction() + " ≈ " + differenceDecimal);
+                } catch (NumberFormatException except) {
+                    errorForCalculator.setText(invalidInput);
+                } catch (ArithmeticException arithExcept) {
+                    errorForCalculator.setText(divisionBy0);
+                }
             }
         });
 
         /** Event handler for multiplication */
         multiply.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                fraction1 = getUserInput(t1, results);
-                fraction2 = getUserInput(t2, results);
-                MixedFraction product = fraction1.multiply(fraction2);
-                double productDecimal = product.decimalEquivalent();
-                results.setText("Product = " + product.toMixedFraction() + " ≈ " + productDecimal);
+                try {
+                    fraction1 = getUserInput(t1);
+                    fraction2 = getUserInput(t2);
+                    MixedFraction product = fraction1.multiply(fraction2);
+                    double productDecimal = product.decimalEquivalent();
+                    results.setText("Product = " + product.toMixedFraction() + " ≈ " + productDecimal);
+                } catch(NumberFormatException except) {
+                    errorForCalculator.setText(invalidInput);
+                } catch (ArithmeticException arithExcept) {
+                    errorForCalculator.setText(divisionBy0);
+                }
             }
         });
 
         /** Event handler for division */
         divide.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                fraction1 = getUserInput(t1, results);
-                fraction2 = getUserInput(t2, results);
-                MixedFraction quotient = fraction1.divide(fraction2);
-                double quotientDecimal = quotient.decimalEquivalent();
-                results.setText("Quotient = " + quotient.toMixedFraction() + " ≈ " + quotientDecimal);
+                try {
+                    fraction1 = getUserInput(t1);
+                    fraction2 = getUserInput(t2);
+                    MixedFraction quotient = fraction1.divide(fraction2);
+                    double quotientDecimal = quotient.decimalEquivalent();
+                    results.setText("Quotient = " + quotient.toMixedFraction() + " ≈ " + quotientDecimal);
+                } catch(NumberFormatException except) {
+                    errorForCalculator.setText(invalidInput);
+                } catch (ArithmeticException arithExcept) {
+                    errorForCalculator.setText(divisionBy0);
+                }
             }
+
         });
 
         /** Event handler for reduce fraction */
         reduce.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                MixedFraction fraction = getUserInput(t3, resultsForReduce);
-                double quotientFraction = fraction.mixedFractionToImproper().decimalEquivalent();
-                resultsForReduce.setText("Reduced = " + fraction.reduce() + " ≈ " +  quotientFraction);
+                try {
+                    MixedFraction fraction = getUserInput(t3);
+                    double quotientFraction = fraction.mixedFractionToImproper().decimalEquivalent();
+                    resultsForReduce.setText("Reduced = " + fraction.reduce() + " ≈ " + quotientFraction);
+                } catch(NumberFormatException except) {
+                    errorForReduce.setText(invalidInput);
+                } catch(ArithmeticException arithExcept) {
+                    errorForReduce.setText(divisionBy0);
+                }
             }
         });
     }
