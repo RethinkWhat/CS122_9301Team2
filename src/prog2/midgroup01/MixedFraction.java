@@ -142,10 +142,9 @@ public class MixedFraction extends Fraction {
     * */
     public MixedFraction multiply(MixedFraction other) {
         MixedFraction product = new MixedFraction();
-        //Fraction fraction1 = this.mixedFractionToImproper();
         product.setNumerator(this.mixedFractionToImproper().getNumerator() * other.mixedFractionToImproper().getNumerator());
         product.setDenominator(this.getDenominator() * other.getDenominator());
-        product = product.toMixedFraction();
+        product.reduceFraction();
         return product;
     }
 
@@ -185,12 +184,27 @@ public class MixedFraction extends Fraction {
         return new Fraction(numerator, this.getDenominator());
     }// this method is used to compute improper to mixed fraction
 
+    public MixedFraction reduce() {
+        Fraction obj = new MixedFraction();
+        obj = this.mixedFractionToImproper();
+        MixedFraction obj2 = new MixedFraction(0,obj);
+        obj2.reduceFraction();
+        return obj2.toMixedFraction();
+    }
+
     /** Method to return the mixed fraction as a string. */
     /*
         Algorithm:
         1. Return the whole number, numerator, and the denominator as a single string.
     */
     public String toString() {
-        return this.wholeNumber + " " + this.getNumerator() + "/" + this.getDenominator();
+        String returnStatement = "";
+        if (this.wholeNumber != 0)
+            returnStatement += this.wholeNumber + " ";
+
+        if (getNumerator() != 0 && getDenominator() != 0)
+            returnStatement += getNumerator() + "/" + getDenominator();
+
+        return returnStatement;
     }
 }
