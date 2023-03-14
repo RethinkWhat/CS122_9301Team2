@@ -207,7 +207,7 @@ public class FractionTester extends JFrame {
 
 
     public FractionTester() {
-        setBounds(210,210,280,400);
+        setBounds(210,210,295,400);
         //setLayout(new FlowLayout());
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -216,7 +216,7 @@ public class FractionTester extends JFrame {
         JLabel l1 = new JLabel(" Fraction Calculator");
         l1.setFont(new Font("Arial", Font.BOLD, 20));
         add(l1);
-        l1.setBounds(42,0,200,50);
+        l1.setBounds(50,0,200,50);
 
 
         // Fraction 1
@@ -259,9 +259,11 @@ public class FractionTester extends JFrame {
         results.setBounds(20, 160,270,20);
 
         // line
-        JLabel line = new JLabel("-----------------------------------");
+        JLabel line = new JLabel("- - - - - - - - - - - - - - - - - - - - - - - - -");
         add(line);
         line.setBounds(0,175,500,50);
+        line.setFont(new Font("Arial",Font.BOLD, 20));
+
 
         // Reduce
         JLabel f3 = new JLabel("Reduce a Fraction");
@@ -275,12 +277,13 @@ public class FractionTester extends JFrame {
         add(t3);
         add(reduce);
         t3.setBounds(17,250,140,20);
-        reduce.setBounds(165,250,50,20);
+        reduce.setBounds(165,250,75,20);
 
         //Results for reduce
-        JLabel resultsForReduce = new JLabel();
-        add(resultsForReduce);
-        resultsForReduce.setBounds(20,400,200,20);
+        JLabel results2 = new JLabel("RESULTS");
+        results2.setBounds(165,350,75,20);
+
+
 
 
 
@@ -371,13 +374,14 @@ public class FractionTester extends JFrame {
                 try {
                     MixedFraction fraction = getUserInput(t3);
                     double quotientFraction = fraction.mixedFractionToImproper().decimalEquivalent();
-                    resultsForReduce.setText("Reduced = " + fraction.reduce() + " ≈ " + quotientFraction);
-                    resultsForReduce.setForeground(Color.black);
+                    ////resultsForReduce.setText("Reduced = " + fraction.reduce() + " ≈ " + quotientFraction);
+                   // resultsForReduce.setForeground(Color.black);
                 } catch(NumberFormatException except) {
-                    resultsForReduce.setText(invalidInput);
-                    resultsForReduce.setForeground(Color.RED);
+                 //   resultsForReduce.setText(invalidInput);
+                  //  resultsForReduce.setForeground(Color.RED);
                 } catch(ArithmeticException arithExcept) {
-                    resultsForReduce.setText(divisionBy0);
+                  //  resultsForReduce.setText(divisionBy0);
+                  //  resultsForReduce.setForeground(Color.RED);
                 }
             }
         });
