@@ -192,9 +192,7 @@ public class FractionTester extends JFrame {
     public String divisionBy0 = "Division by 0 not allowed.";
     public JTextField t1 = new JTextField(10);
     public JTextField t2 = new JTextField(10);
-
-    public JLabel errorForReduce = new JLabel();
-    public JLabel errorForCalculator = new JLabel();
+    public JLabel results = new JLabel();
 
     MixedFraction fraction1, fraction2;
 
@@ -257,14 +255,8 @@ public class FractionTester extends JFrame {
 
 
         // Results for Calculator
-        JLabel results = new JLabel();
         add(results);
         results.setBounds(20, 160,270,20);
-
-        // Error for Calculator
-        add(errorForCalculator);
-        errorForCalculator.setForeground(Color.RED);
-        errorForCalculator.setBounds(20, 160,270,20);
 
         // line
         JLabel line = new JLabel("-----------------------------------");
@@ -285,16 +277,11 @@ public class FractionTester extends JFrame {
         t3.setBounds(17,250,140,20);
         reduce.setBounds(165,250,50,20);
 
-
         //Results for reduce
         JLabel resultsForReduce = new JLabel();
-            add(resultsForReduce);
-        resultsForReduce.setBounds(20,290,200,20);
+        add(resultsForReduce);
+        resultsForReduce.setBounds(20,400,200,20);
 
-        //Error for reduce
-        add(errorForReduce);
-        add(errorForReduce);
-        errorForReduce.setForeground(Color.RED);
 
 
         /** Event handler for addition */
@@ -306,10 +293,13 @@ public class FractionTester extends JFrame {
                     MixedFraction sum = fraction1.add(fraction2);
                     double sumDecimal = sum.decimalEquivalent();
                     results.setText("Sum = " + sum.toMixedFraction() + " ≈ " + sumDecimal);
+                    results.setForeground(Color.black);
                 } catch(NumberFormatException except) {
-                    errorForCalculator.setText(invalidInput);
+                    results.setForeground(Color.RED);
+                    results.setText(invalidInput);
                 } catch (ArithmeticException arithExcept) {
-                    errorForCalculator.setText(divisionBy0);
+                    results.setForeground(Color.RED);
+                    results.setText(divisionBy0);
                 }
             }
         });
@@ -323,10 +313,13 @@ public class FractionTester extends JFrame {
                     MixedFraction difference = fraction1.subtract(fraction2);
                     double differenceDecimal = difference.decimalEquivalent();
                     results.setText("Difference = " + difference.toMixedFraction() + " ≈ " + differenceDecimal);
+                    results.setForeground(Color.black);
                 } catch (NumberFormatException except) {
-                    errorForCalculator.setText(invalidInput);
+                    results.setForeground(Color.RED);
+                    results.setText(invalidInput);
                 } catch (ArithmeticException arithExcept) {
-                    errorForCalculator.setText(divisionBy0);
+                    results.setText(divisionBy0);
+                    results.setForeground(Color.RED);
                 }
             }
         });
@@ -340,10 +333,13 @@ public class FractionTester extends JFrame {
                     MixedFraction product = fraction1.multiply(fraction2);
                     double productDecimal = product.decimalEquivalent();
                     results.setText("Product = " + product.toMixedFraction() + " ≈ " + productDecimal);
+                    results.setForeground(Color.black);
                 } catch(NumberFormatException except) {
-                    errorForCalculator.setText(invalidInput);
+                    results.setText(invalidInput);
+                    results.setForeground(Color.RED);
                 } catch (ArithmeticException arithExcept) {
-                    errorForCalculator.setText(divisionBy0);
+                    results.setText(divisionBy0);
+                    results.setForeground(Color.RED);
                 }
             }
         });
@@ -357,10 +353,13 @@ public class FractionTester extends JFrame {
                     MixedFraction quotient = fraction1.divide(fraction2);
                     double quotientDecimal = quotient.decimalEquivalent();
                     results.setText("Quotient = " + quotient.toMixedFraction() + " ≈ " + quotientDecimal);
+                    results.setForeground(Color.black);
                 } catch(NumberFormatException except) {
-                    errorForCalculator.setText(invalidInput);
+                    results.setText(invalidInput);
+                    results.setForeground(Color.RED);
                 } catch (ArithmeticException arithExcept) {
-                    errorForCalculator.setText(divisionBy0);
+                    results.setText(divisionBy0);
+                    results.setForeground(Color.RED);
                 }
             }
 
@@ -373,10 +372,12 @@ public class FractionTester extends JFrame {
                     MixedFraction fraction = getUserInput(t3);
                     double quotientFraction = fraction.mixedFractionToImproper().decimalEquivalent();
                     resultsForReduce.setText("Reduced = " + fraction.reduce() + " ≈ " + quotientFraction);
+                    resultsForReduce.setForeground(Color.black);
                 } catch(NumberFormatException except) {
-                    errorForReduce.setText(invalidInput);
+                    resultsForReduce.setText(invalidInput);
+                    resultsForReduce.setForeground(Color.RED);
                 } catch(ArithmeticException arithExcept) {
-                    errorForReduce.setText(divisionBy0);
+                    resultsForReduce.setText(divisionBy0);
                 }
             }
         });
