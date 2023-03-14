@@ -207,88 +207,87 @@ public class FractionTester extends JFrame {
 
 
     public FractionTester() {
-        setBounds(210,210,295,400);
-        //setLayout(new FlowLayout());
+        setBounds(10, 10, 300, 400);
+        setLayout(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         // Title
         JLabel l1 = new JLabel(" Fraction Calculator");
         l1.setFont(new Font("Arial", Font.BOLD, 20));
+        l1.setBounds(48, 10, 200, 20);
         add(l1);
-        l1.setBounds(50,0,200,50);
 
 
         // Fraction 1
         JLabel f1 = new JLabel("Enter fraction 1: ");
         add(f1);
         add(t1);
-        f1.setBounds(20,50,200,20);
-        t1.setBounds(120,50,140,20);
+        f1.setBounds(20, 50, 200, 20);
+        t1.setBounds(120, 50, 140, 20);
 
         // Fraction 2
         JLabel f2 = new JLabel("Enter fraction 2: ");
         add(f2);
         add(t2);
-        f2.setBounds(20,80,200,20);
-        t2.setBounds(120,80,140,20);
+        f2.setBounds(20, 80, 200, 20);
+        t2.setBounds(120, 80, 140, 20);
 
         // Addition
         JButton add = new JButton("+");
         add(add);
-        add.setBounds(20,120,50,20);
+        add.setBounds(20, 120, 50, 20);
 
         // Subtract
         JButton subtract = new JButton("-");
         add(subtract);
-        subtract.setBounds(85,120,50,20);
+        subtract.setBounds(85, 120, 50, 20);
 
         // Multiply
         JButton multiply = new JButton("x");
         add(multiply);
-        multiply.setBounds(150,120,50,20);
+        multiply.setBounds(150, 120, 50, 20);
 
         // Divide
         JButton divide = new JButton("/");
         add(divide);
-        divide.setBounds(215,120,50,20);
+        divide.setBounds(215, 120, 50, 20);
 
 
         // Results for Calculator
         add(results);
-        results.setBounds(20, 160,270,20);
+        results.setBounds(20, 160, 300, 20);
 
         // line
         JLabel line = new JLabel("- - - - - - - - - - - - - - - - - - - - - - - - -");
         add(line);
-        line.setBounds(0,175,500,50);
-        line.setFont(new Font("Arial",Font.BOLD, 20));
+        line.setBounds(0, 175, 500, 50);
+        line.setFont(new Font("Arial", Font.BOLD, 20));
 
 
         // Reduce
         JLabel f3 = new JLabel("Reduce a Fraction");
         f3.setFont(new Font("Arial", Font.BOLD, 20));
         add(f3);
-        f3.setBounds(55,200,200,50);
+        f3.setBounds(55, 200, 200, 50);
 
         // TextBox for input
         JTextField t3 = new JTextField(10);
         JButton reduce = new JButton("reduce");
         add(t3);
         add(reduce);
-        t3.setBounds(17,250,140,20);
-        reduce.setBounds(165,250,75,20);
+        t3.setBounds(17, 250, 140, 20);
+        reduce.setBounds(165, 250, 75, 20);
 
         //Results for reduce
-        JLabel results2 = new JLabel("RESULTS");
-        results2.setBounds(165,350,75,20);
-
-
-
+        JLabel resultsForReduce = new JLabel();
+        resultsForReduce.setBounds(20,280, 300, 20);
+        add(resultsForReduce);
 
 
         /** Event handler for addition */
-        add.addActionListener(new ActionListener(){
+
+        add.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 try {
                     fraction1 = getUserInput(t1);
@@ -297,7 +296,7 @@ public class FractionTester extends JFrame {
                     double sumDecimal = sum.decimalEquivalent();
                     results.setText("Sum = " + sum.toMixedFraction() + " ≈ " + sumDecimal);
                     results.setForeground(Color.black);
-                } catch(NumberFormatException except) {
+                } catch (NumberFormatException except) {
                     results.setForeground(Color.RED);
                     results.setText(invalidInput);
                 } catch (ArithmeticException arithExcept) {
@@ -337,7 +336,7 @@ public class FractionTester extends JFrame {
                     double productDecimal = product.decimalEquivalent();
                     results.setText("Product = " + product.toMixedFraction() + " ≈ " + productDecimal);
                     results.setForeground(Color.black);
-                } catch(NumberFormatException except) {
+                } catch (NumberFormatException except) {
                     results.setText(invalidInput);
                     results.setForeground(Color.RED);
                 } catch (ArithmeticException arithExcept) {
@@ -348,7 +347,7 @@ public class FractionTester extends JFrame {
         });
 
         /** Event handler for division */
-        divide.addActionListener(new ActionListener(){
+        divide.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 try {
                     fraction1 = getUserInput(t1);
@@ -357,7 +356,7 @@ public class FractionTester extends JFrame {
                     double quotientDecimal = quotient.decimalEquivalent();
                     results.setText("Quotient = " + quotient.toMixedFraction() + " ≈ " + quotientDecimal);
                     results.setForeground(Color.black);
-                } catch(NumberFormatException except) {
+                } catch (NumberFormatException except) {
                     results.setText(invalidInput);
                     results.setForeground(Color.RED);
                 } catch (ArithmeticException arithExcept) {
@@ -374,14 +373,14 @@ public class FractionTester extends JFrame {
                 try {
                     MixedFraction fraction = getUserInput(t3);
                     double quotientFraction = fraction.mixedFractionToImproper().decimalEquivalent();
-                    ////resultsForReduce.setText("Reduced = " + fraction.reduce() + " ≈ " + quotientFraction);
-                   // resultsForReduce.setForeground(Color.black);
-                } catch(NumberFormatException except) {
-                 //   resultsForReduce.setText(invalidInput);
-                  //  resultsForReduce.setForeground(Color.RED);
-                } catch(ArithmeticException arithExcept) {
-                  //  resultsForReduce.setText(divisionBy0);
-                  //  resultsForReduce.setForeground(Color.RED);
+                    resultsForReduce.setText("Reduced = " + fraction.reduce() + " ≈ " + quotientFraction);
+                    resultsForReduce.setForeground(Color.black);
+                } catch (NumberFormatException except) {
+                    resultsForReduce.setText(invalidInput);
+                    resultsForReduce.setForeground(Color.RED);
+                } catch (ArithmeticException arithExcept) {
+                    resultsForReduce.setText(divisionBy0);
+                    resultsForReduce.setForeground(Color.RED);
                 }
             }
         });
