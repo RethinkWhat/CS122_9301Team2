@@ -6,9 +6,7 @@ public class MixedFraction extends Fraction {
     // Variable to hold the whole number of the mixed fraction
     private int wholeNumber;
 
-    /**
-     * This will become the default constructor because it has no arguments.
-     */
+    /** This will become the default constructor because it has no arguments */
     public MixedFraction() {
         super();
         this.wholeNumber = 0;
