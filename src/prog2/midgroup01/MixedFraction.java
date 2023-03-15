@@ -134,11 +134,11 @@ public class MixedFraction extends Fraction {
      * */
     /*
      * Algorithm:
-     *      1. Convert the mixed fraction to an improper fraction using the toFraction method
-     *      2. Multiply the numerator of the improper fraction by the numerator of the given fraction to get the new numerator
-     *      3. Multiply the denominator of the improper fraction by the denominator of the given fraction to get the new denominator
-     *      4. Create a new MixedFraction object using the toMixedFraction method
-     *      5. Return the new MixedFraction object as the product
+     * 1. Create new object to hold Mixed Fraction object
+     * 2. Invoke the setNumerator method to set the value of the product of the numerator.
+     * 3. Invoke the setDenominator method to set the value of the product of the denominator.
+     * 4. Invoke reduceFraction to reduce the Fraction to the lowest terms possible.
+     * 5. Return the product of the Fraction.
     * */
     public MixedFraction multiply(MixedFraction other) {
         MixedFraction product = new MixedFraction();
