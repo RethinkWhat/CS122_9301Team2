@@ -105,10 +105,7 @@ public class MixedFraction extends Fraction {
         return differenceInMixed;
     }
 
-    /**
-     * Divides a mixed fraction to a fraction
-     * @param other
-     * */
+    /** Method that divides 2 fractions */
     /*
      * Algorithm:
      *      1. Create a new MixedFraction object called quotient.
@@ -127,11 +124,7 @@ public class MixedFraction extends Fraction {
         return quotient;
     }
 
-    /**
-     * Multiplies a mixed fraction to a fraction
-     * @param other
-     * @return the {@code product} of the mixed fraction and a fraction
-     * */
+    /** Method that multiplies 2 fractions together */
     /*
      * Algorithm:
      * 1. Create new object to hold Mixed Fraction object
@@ -148,9 +141,7 @@ public class MixedFraction extends Fraction {
         return product;
     }
 
-    /**
-     * Temporary method for improper to mixed fraction
-     * */
+    /** Temporary method for improper to mixed fraction */
     /*
     * Algorithm:
     *       1. Get the numerator and denominator of the fraction.
@@ -169,7 +160,9 @@ public class MixedFraction extends Fraction {
         return new MixedFraction(wholeNumber, numerator, denominator);
     }
 
-    /**
+
+    /** Method to convert mixed fraction to improper fraction */
+    /*
      * Algorithm:
      * 1.Multiply the whole number by the denominator of the fraction.
      * 2.Add the numerator of the fraction to the result of step 1 to get the total numerator of the improper fraction.
