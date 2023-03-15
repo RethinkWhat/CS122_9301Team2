@@ -89,6 +89,18 @@ public class MixedFraction extends Fraction {
         return obj;
     }
 
+    /** Method to add fractions */
+    /*
+        Algorithm:
+            1. Accept a fraction as a parameter
+            2. Create a Fraction object called sum
+            3. Convert the 'this' fraction into improper by invoking the mixedFractionToImproper method
+            4. Convert the passed in fraction by invoking the  mixedFractionToImproper method
+            5. Call the addFraction method of the fraction class and add the 2 fractions assigning the value to sum
+            6. Create a MixedFraction object and call it sumInMixed
+            7. Assign the sum variable value to the MixedFraction object
+            8. Return sumInMixed
+     */
     public MixedFraction add(MixedFraction other){
         Fraction sum = new Fraction();
         sum = this.mixedFractionToImproper().addFraction(other.mixedFractionToImproper());
@@ -96,6 +108,18 @@ public class MixedFraction extends Fraction {
         return sumInMixed;
     }
 
+    /** Method to subtract fractions */
+    /*
+        Algorithm:
+            1. Accept a fraction as a parameter
+            2. Create a Fraction object called difference
+            3. Convert the 'this' fraction into improper by invoking the mixedFractionToImproper method
+            4. Convert the passed in fraction by invoking the  mixedFractionToImproper method
+            5. Call the subtractFraction method of the fraction class and subtract the 2 fractions assigning the value to difference
+            6. Create a MixedFraction object and call it differenceInMixed
+            7. Assign the difference variable value to the MixedFraction object
+            8. Return differenceInMixed
+     */
     public MixedFraction subtract(MixedFraction other){
         Fraction difference = new Fraction();
         difference = this.mixedFractionToImproper().subtractFraction(other.mixedFractionToImproper());
@@ -106,10 +130,12 @@ public class MixedFraction extends Fraction {
     /** Method that divides 2 fractions */
     /*
      * Algorithm:
-     * 1. Create new object named reciprocal that converts proper fraction to improper.
-     * 2. Create a new object named quotient that multiplies the fraction in the converted reciprocal
-     * 3. Return the quotient of the MixedFraction
-     *
+     *      1. Accept a MixedFraction as a parameter
+     *      2. Create a new object named reciprocal
+     *      3. Convert the passed in MixedFraction object to a mixedFraction
+     *      4. Pass in the numerator as the denominator and denominator as numerator
+     *      5. Create a new object named quotient that multiplies the 'this' fraction and the converted reciprocal
+     *      6. Return the quotient of the MixedFraction
     */
     public MixedFraction divide(MixedFraction other) {
         MixedFraction reciprocal = new MixedFraction(0,other.mixedFractionToImproper().getDenominator(),
@@ -121,12 +147,13 @@ public class MixedFraction extends Fraction {
     /** Method that multiplies 2 fractions together */
     /*
      * Algorithm:
-     * 1. Create new object to hold Mixed Fraction object
-     * 2. Invoke the setNumerator method to set the value of the product of the numerator.
-     * 3. Invoke the setDenominator method to set the value of the product of the denominator.
-     * 4. Invoke reduceFraction to reduce the Fraction to the lowest terms possible.
-     * 5. Return the product of the Fraction.
-    * */
+     *      1. Create a new MixedFraction object called product to hold Mixed Fraction object
+     *      2. Invoke the setNumerator method to set the value of the product of the numerator equal to 'this' numerator multiplied by passed in numerator
+     *      3. Invoke the setDenominator method to set the value of the product of the denominator  equal to 'this' denominator multiplied by passed in denominator
+     *      4. Assign the values to the product variable
+     *      5. Invoke reduceFraction to reduce the fraction to the lowest terms possible.
+     *      6. Return the product of the Fraction.
+     */
     public MixedFraction multiply(MixedFraction other) {
         MixedFraction product = new MixedFraction();
         product.setNumerator(this.mixedFractionToImproper().getNumerator() * other.mixedFractionToImproper().getNumerator());
@@ -138,7 +165,7 @@ public class MixedFraction extends Fraction {
     /** Temporary method for improper to mixed fraction */
     /*
     * Algorithm:
-    *       1. Get the numerator and denominator of the fraction.
+    *       1. Get the numerator and denominator of 'this' fraction.
     *       2. Calculate the whole number by dividing the numerator by
     *          the denominator and rounding down to the nearest integer.
     *       3. Calculate the remainder by taking the numerator modulo the denominator.
@@ -158,10 +185,12 @@ public class MixedFraction extends Fraction {
     /** Method to convert mixed fraction to improper fraction */
     /*
      * Algorithm:
-     * 1.Multiply the whole number by the denominator of the fraction.
-     * 2.Add the numerator of the fraction to the result of step 1 to get the total numerator of the improper fraction.
-     * 3.The denominator of the improper fraction is simply the same as the denominator of the original fraction.
-     * 4.Create a new Fraction object with the numerator and denominator calculated in steps 2 and 3.
+     *      1. Use the getNumerator method to get the numerator of 'this' fraction
+     *      2. If the whole number of 'this' fraction is not equal to 0
+     *      3. Multiply the whole number by the denominator of the fraction.
+     *      4. Add the numerator of the fraction to the result of step 3 to get the total numerator of the improper fraction.
+     *      5. Set The denominator of the improper fraction as the denominator of either fraction.
+     *      6.Create a new Fraction object with the numerator and denominator calculated in steps 3 and 4.
      */
     public Fraction mixedFractionToImproper() {
         int numerator = this.getNumerator();
@@ -171,8 +200,18 @@ public class MixedFraction extends Fraction {
         return new Fraction(numerator, this.getDenominator());
     }// this method is used to compute improper to mixed fraction
 
+    /** Method to reduce a MixedFraction */
+    /*
+        Algorithm:
+            1. Create a Fraction object called obj
+            2. Call the mixedFractionToImproper method on the 'this' fraction
+            3. Assign the value of 'this' MixedFraction to the Fraction object
+            4. Create a MixedFraction object called obj2 and assign the value of obj to this
+            5. Call the reduceFraction() method of the Fraction class on this object
+            6. Return obj2
+     */
     public MixedFraction reduce() {
-        Fraction obj = new MixedFraction();
+        Fraction obj = new Fraction();
         obj = this.mixedFractionToImproper();
         MixedFraction obj2 = new MixedFraction(0,obj);
         obj2.reduceFraction();
@@ -182,14 +221,20 @@ public class MixedFraction extends Fraction {
     /** Method to return the mixed fraction as a string. */
     /*
         Algorithm:
-        1. Return the whole number, numerator, and the denominator as a single string.
+            1. Create a string called returnStatement
+            2. Create an if statement to check whether the wholeNumber variable value is 0
+                2.1 If it is not then append its value to returnStatement
+            3. Create an if statement to check whether numerator is equal to 0
+                3.1 If it is not then call the getNumerator() and getDenominator() to get the values of the
+                numerator and denominator and append it to returnStatement
+            4. Return the returnStatement
     */
     public String toString() {
         String returnStatement = "";
         if (this.wholeNumber != 0)
             returnStatement += this.wholeNumber + " ";
 
-        if (getNumerator() != 0 && getDenominator() != 0)
+        if (getNumerator() != 0)
             returnStatement += getNumerator() + "/" + getDenominator();
 
         return returnStatement;
