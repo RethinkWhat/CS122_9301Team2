@@ -108,14 +108,10 @@ public class MixedFraction extends Fraction {
     /** Method that divides 2 fractions */
     /*
      * Algorithm:
-     *      1. Create a new MixedFraction object called quotient.
-     *      2. Convert the current MixedFraction to an improper fraction called fraction1.
-     *      3. Get the numerator and denominator of the other Fraction.
-     *      4. Calculate the numerator and denominator of the quotient as follows:
-     *              quotient numerator = fraction1 numerator * other denominator
-     *              quotient denominator = fraction1 denominator * other numerator
-     *      5. Convert quotient to a mixed fraction using the toMixedFraction method.
-     *      6. Return the quotient mixed fraction.
+     * 1. Create new object named reciprocal that converts proper fraction to improper.
+     * 2. Create a new object named quotient that multiplies the fraction in the converted reciprocal
+     * 3. Return the quotient of the MixedFraction
+     *
     */
     public MixedFraction divide(MixedFraction other) {
         MixedFraction reciprocal = new MixedFraction(0,other.mixedFractionToImproper().getDenominator(),
