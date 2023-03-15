@@ -106,14 +106,10 @@ public class MixedFraction extends Fraction {
     /** Method that divides 2 fractions */
     /*
      * Algorithm:
-     *      1. Create a new MixedFraction object called quotient.
-     *      2. Convert the current MixedFraction to an improper fraction called fraction1.
-     *      3. Get the numerator and denominator of the other Fraction.
-     *      4. Calculate the numerator and denominator of the quotient as follows:
-     *              quotient numerator = fraction1 numerator * other denominator
-     *              quotient denominator = fraction1 denominator * other numerator
-     *      5. Convert quotient to a mixed fraction using the toMixedFraction method.
-     *      6. Return the quotient mixed fraction.
+     * 1. Create new object named reciprocal that converts proper fraction to improper.
+     * 2. Create a new object named quotient that multiplies the fraction in the converted reciprocal
+     * 3. Return the quotient of the MixedFraction
+     *
     */
     public MixedFraction divide(MixedFraction other) {
         MixedFraction reciprocal = new MixedFraction(0,other.mixedFractionToImproper().getDenominator(),
@@ -125,11 +121,11 @@ public class MixedFraction extends Fraction {
     /** Method that multiplies 2 fractions together */
     /*
      * Algorithm:
-     *      1. Convert the mixed fraction to an improper fraction using the toFraction method
-     *      2. Multiply the numerator of the improper fraction by the numerator of the given fraction to get the new numerator
-     *      3. Multiply the denominator of the improper fraction by the denominator of the given fraction to get the new denominator
-     *      4. Create a new MixedFraction object using the toMixedFraction method
-     *      5. Return the new MixedFraction object as the product
+     * 1. Create new object to hold Mixed Fraction object
+     * 2. Invoke the setNumerator method to set the value of the product of the numerator.
+     * 3. Invoke the setDenominator method to set the value of the product of the denominator.
+     * 4. Invoke reduceFraction to reduce the Fraction to the lowest terms possible.
+     * 5. Return the product of the Fraction.
     * */
     public MixedFraction multiply(MixedFraction other) {
         MixedFraction product = new MixedFraction();
