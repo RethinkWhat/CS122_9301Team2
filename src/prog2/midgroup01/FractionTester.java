@@ -155,6 +155,8 @@ public class FractionTester extends JFrame {
 
     /** This handles the placement of the GUI components **/
     /*
+        Process:
+
         Algorithm:
             1. Set the appropriate specifications of the GUI including, dimension, layout option, visibility, and the
             default close operation
@@ -401,11 +403,20 @@ public class FractionTester extends JFrame {
          */
         divide.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                do {
+                try {
+                    fraction1 = getUserInput(t1);
+                    fraction2 = getUserInput(t2);
                     MixedFraction quotient = fraction1.divide(fraction2);
                     double quotientDecimal = quotient.decimalEquivalent();
+                    results.setForeground(Color.black);
                     results.setText("Quotient = " + quotient.toMixedFraction() + " ≈ " + quotientDecimal);
-                } while(exceptionHandling());
+                } catch (NumberFormatException except) {
+                    results.setText(invalidInput);
+                    results.setForeground(Color.RED);
+                } catch (ArithmeticException arithExcept) {
+                    results.setText(divisionBy0);
+                    results.setForeground(Color.RED);
+                }
             }
         });
 
@@ -441,21 +452,5 @@ public class FractionTester extends JFrame {
                 }
             }
         });
-    }
-    public boolean exceptionHandling() {
-        try {
-            fraction1 = getUserInput(t1);
-            fraction2 = getUserInput(t2);
-            results.setForeground(Color.black);
-            return true;
-        } catch (NumberFormatException except) {
-            results.setText(invalidInput);
-            results.setForeground(Color.RED);
-            return false;
-        } catch (ArithmeticException arithExcept) {
-            results.setText(divisionBy0);
-            results.setForeground(Color.RED);
-            return false;
-        }
     }
 } // end of FractionArithmetic class
