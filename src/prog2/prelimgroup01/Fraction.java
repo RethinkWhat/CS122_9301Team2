@@ -26,7 +26,7 @@
  *  〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
  */
 
-package prog2.pregroup01;
+package prog2.prelimgroup01;
 
 public class Fraction {
     // Declare the local variables for Fraction class.

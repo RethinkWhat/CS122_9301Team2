@@ -149,7 +149,7 @@
 
  〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
  */
-package prog2.pregroup01;
+package prog2.prelimgroup01;
 
 import java.util.Scanner;
 

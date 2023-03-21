@@ -1,6 +1,6 @@
 package prog2.midgroup01;
 
-import prog2.pregroup01.Fraction;
+import prog2.prelimgroup01.Fraction;
 public class MixedFraction extends Fraction {
 
     // Variable to hold the whole number of the mixed fraction
