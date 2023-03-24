@@ -122,7 +122,6 @@ public class FractionTester extends JFrame {
         int wholeNumber = 0;
         int numerator, denominator;
         MixedFraction fraction;
-
         try {                                                   // This handles the mixed fraction input
             fractionString = input.split(" |/");          // This splits according to a space and to a slash
             denominator = Integer.valueOf(fractionString[2]);
@@ -156,6 +155,8 @@ public class FractionTester extends JFrame {
 
     /** This handles the placement of the GUI components **/
     /*
+        Process:
+
         Algorithm:
             1. Set the appropriate specifications of the GUI including, dimension, layout option, visibility, and the
             default close operation
@@ -182,6 +183,7 @@ public class FractionTester extends JFrame {
         // components easier. Sir chose to go for a gridLayout in his demonstration
         setVisible(true); // This is so that the GUI would show. By default setVisible is set to false
         setDefaultCloseOperation(EXIT_ON_CLOSE); // This is so that exit button works on the GUI
+        setResizable(false); // Makes it so that the user cannot resize the GUI
 
         // Title
         JLabel l1 = new JLabel(" Fraction Calculator");         // JLabel is string you would like displayed
@@ -406,8 +408,8 @@ public class FractionTester extends JFrame {
                     fraction2 = getUserInput(t2);
                     MixedFraction quotient = fraction1.divide(fraction2);
                     double quotientDecimal = quotient.decimalEquivalent();
-                    results.setText("Quotient = " + quotient.toMixedFraction() + " ≈ " + quotientDecimal);
                     results.setForeground(Color.black);
+                    results.setText("Quotient = " + quotient.toMixedFraction() + " ≈ " + quotientDecimal);
                 } catch (NumberFormatException except) {
                     results.setText(invalidInput);
                     results.setForeground(Color.RED);
@@ -416,7 +418,6 @@ public class FractionTester extends JFrame {
                     results.setForeground(Color.RED);
                 }
             }
-
         });
 
         /** Event handler for reduce fraction */
