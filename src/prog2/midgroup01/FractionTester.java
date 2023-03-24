@@ -60,6 +60,14 @@ import java.awt.geom.RoundRectangle2D;
 
 public class FractionTester extends JFrame {
 
+    public String invalidInput = "Accepted formats: 4 1/2, 2/4, 3."; // Error message when an unaccepted format is inputted by user
+    public String divisionBy0 = "Division by 0 not allowed."; // Error message when division by 0 is attempted
+    public JTextField t1 = new JTextField(10); // The text field which accepts input for fraction 1
+    public JTextField t2 = new JTextField(10); // The text field which accepts input for fraction 2
+    public JLabel results = new JLabel(); // The results which display after the operations are preformed
+
+    MixedFraction fraction1, fraction2; // Declared these here so that we would not declare different MixedFraction objects in each method
+
     /** Method to get user input */
     /*
         Process:
@@ -135,14 +143,6 @@ public class FractionTester extends JFrame {
         return (fraction);
     }
 
-    public String invalidInput = "Accepted formats: 4 1/2, 2/4, 3."; // Error message when an unaccepted format is inputted by user
-    public String divisionBy0 = "Division by 0 not allowed."; // Error message when division by 0 is attempted
-    public JTextField t1 = new JTextField(10); // The text field which accepts input for fraction 1
-    public JTextField t2 = new JTextField(10); // The text field which accepts input for fraction 2
-    public JLabel results = new JLabel(); // The results which display after the operations are preformed
-
-    MixedFraction fraction1, fraction2;
-    // Declared these here so that we would not declare different MixedFraction objects in each method
 
     /** Main method to invoke a method to run the application program.*/
     /*
