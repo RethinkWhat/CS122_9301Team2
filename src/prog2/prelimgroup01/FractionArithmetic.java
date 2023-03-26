@@ -165,7 +165,7 @@ public class FractionArithmetic {
 
     /**
      * Main method to invoke a method to run the application program.*/
-    /*
+    /**
        Algorithm:
        1. Invoke the run method.
      */
@@ -175,7 +175,7 @@ public class FractionArithmetic {
 
     /**
      * Method to execute the application program.*/
-    /*
+    /**
        Algorithm:
        1. Declare local variables
        2. Invoke the showIntroduction method
@@ -287,7 +287,7 @@ public class FractionArithmetic {
     /**
      * Method to print an introduction statement that displays information about the purpose
      * of the program and guidelines for the user.*/
-    /*
+    /**
        Algorithm:
        1. Print an introduction statement of the program.
      */
@@ -308,7 +308,7 @@ public class FractionArithmetic {
 
     /**
      * Method to display the available choices for the user to pick from.*/
-     /*
+     /**
        Algorithm:
        1. Declare local variable
        2. If the user input for the value of the first fraction and second fraction does not exist.
@@ -339,7 +339,7 @@ public class FractionArithmetic {
 
     /**
      * Method that reads the user input of a chosen number that corresponds to a specific choice.*/
-     /*
+     /**
        Algorithm:
        1. Declare the local variables.
        2. Implement a do-while statement that reads the menu choice of the user input
@@ -373,7 +373,7 @@ public class FractionArithmetic {
 
     /**
      * Method that reads the user input of the numerator and denominator of a fraction.*/
-     /*
+     /**
        Algorithm:
        1. Declare local variables.
        2. Implement a do-while statement that reads the numerator of a fraction through user input.
@@ -423,7 +423,7 @@ public class FractionArithmetic {
 
     /**
      * Method to read the user input of the numerator and denominator of the first fraction.*/
-     /*
+     /**
        Algorithm:
        1. Print an appropriate statement to indicate that the user is entering a value of the first fraction.
        2. Declare "fraction1" as a Fraction variable with int numerator and int denominator.
@@ -446,7 +446,7 @@ public class FractionArithmetic {
 
     /**
      * Method to read the user input of the numerator and denominator of the second fraction.*/
-     /*
+     /**
        Algorithm:
        1. Print an appropriate statement to indicate that the user is entering a value of the second fraction.
        2. Declare "fraction2" as a Fraction variable with int numerator and int denominator.
@@ -469,7 +469,7 @@ public class FractionArithmetic {
 
     /**
      * Method to add two fractions (fraction1 and otherFraction)*/
-    /*
+    /**
        Algorithm:
        1. Declare "sum" as a Fraction variable with int numerator and int denominator.
        2. Add the value of the first fraction to the other fraction.
@@ -485,7 +485,7 @@ public class FractionArithmetic {
 
     /**
      * Method to subtract the fractions (fraction1 and otherFraction)*/
-    /*
+    /**
        Algorithm:
        1. Declare "difference" as a Fraction variable with int numerator and int denominator.
        2. Subtract the value of the first fraction to the other fraction.
@@ -502,7 +502,7 @@ public class FractionArithmetic {
 
     /**
      * Method to multiply two fractions (fraction1 and otherFraction)*/
-    /*
+    /**
        Algorithm:
        1. Declare "product" as a Fraction variable with int numerator and int denominator.
        2. Multiply the value of the first fraction to the other fraction.
@@ -519,7 +519,7 @@ public class FractionArithmetic {
 
     /**
      * Method to divide two fractions (fraction1 and otherFraction)*/
-    /*
+    /**
        Algorithm:
        1. Declare "quotient" as a Fraction variable with int numerator and int denominator.
        2. Divide the value of the first fraction to the other fraction.
@@ -536,7 +536,7 @@ public class FractionArithmetic {
 
     /**
      * Method to reduce a fraction to the lowest terms.*/
-    /*
+    /**
        Algorithm:
        1. Print the original value of the fraction to be reduced with an appropriate statement.
        2. Reduce the original value of the fraction to the lowest terms.
@@ -553,7 +553,7 @@ public class FractionArithmetic {
 
     /**
      * Method to read the user input of the enter key.*/
-    /*
+    /**
        Algorithm:
        1. Read the user input of the enter key
        2. Advance the scanner to the next line.
@@ -566,7 +566,7 @@ public class FractionArithmetic {
 
     /**
      * Method to display the program closing statement.*/
-    /*
+    /**
        Algorithm:
        1. Print the program closing statement.
        2. Exit by terminating the program.
@@ -581,7 +581,7 @@ public class FractionArithmetic {
         System.exit(0);
     } // end of showExit method
 
-    /*
+    /**
        Algorithm:
        1. Declare "keyboard" as a new scanner for FractionArithmetic class.
        2. Declare "input1Exists" as a boolean variable with value "false".

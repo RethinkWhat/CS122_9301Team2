@@ -13,7 +13,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Constructor to handle passed in whole number and Fraction object */
-    /*
+    /**
         Algorithm:
         1. Accept a whole number and fraction object
         2. Use super to pass in the numerator and denominator using the get methods of the Fraction object
@@ -25,7 +25,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Constructor to handle passed in whole number, numerator, and denominator . */
-    /*
+    /**
         Algorithm:
             1. Accept a whole number, numerator, and denominator as parameters
             2. Use super to create a fraction using the passed in numerator and denominator
@@ -37,7 +37,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Constructor that receives a given fraction. */
-    /*
+    /**
         Algorithm:
             1. Accept a fraction as a parameter
             2. Call Fraction class using super and pass in the numerator and denominator as parameters
@@ -47,7 +47,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Method to set the value of the whole number */
-    /*
+    /**
         Algorithm:
             1. Accept a whole number as a parameter
             2. Assign it to whole number
@@ -55,7 +55,7 @@ public class MixedFraction extends Fraction {
     public void setWholePart(int whole) { this.wholeNumber = whole; }
 
     /** Method to set the value of the fraction part */
-    /*
+    /**
             Algorithm:
             1. Accept a fraction as a parameter
             2. Set the numerator and denominator using setters and getters
@@ -66,7 +66,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Method to get the whole number of a mixed fraction */
-    /*
+    /**
         Algorithm:
             1. Return the value assigned to the whole number
      */
@@ -75,7 +75,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Method to get the fraction part of the mixed fraction */
-    /*
+    /**
         Algorithm:
             1. Get numerator using getNumerator method
             2. Get denominator using getDenominator method
@@ -90,7 +90,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Method to add fractions */
-    /*
+    /**
         Algorithm:
             1. Accept a fraction as a parameter
             2. Create a Fraction object called sum
@@ -109,7 +109,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Method to subtract fractions */
-    /*
+    /**
         Algorithm:
             1. Accept a fraction as a parameter
             2. Create a Fraction object called difference
@@ -128,7 +128,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Method that divides 2 fractions */
-    /*
+    /**
      * Algorithm:
      *      1. Accept a MixedFraction as a parameter
      *      2. Create a new object named reciprocal
@@ -145,7 +145,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Method that multiplies 2 fractions together */
-    /*
+    /**
      * Algorithm:
      *      1. Create a new MixedFraction object called product to hold Mixed Fraction object
      *      2. Invoke the setNumerator method to set the value of the product of the numerator equal to 'this' numerator multiplied by passed in numerator
@@ -163,7 +163,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Temporary method for improper to mixed fraction */
-    /*
+    /**
     * Algorithm:
     *       1. Get the numerator and denominator of 'this' fraction.
     *       2. Calculate the whole number by dividing the numerator by
@@ -183,7 +183,7 @@ public class MixedFraction extends Fraction {
 
 
     /** Method to convert mixed fraction to improper fraction */
-    /*
+    /**
      * Algorithm:
      *      1. Use the getNumerator method to get the numerator of 'this' fraction
      *      2. If the whole number of 'this' fraction is not equal to 0
@@ -201,7 +201,7 @@ public class MixedFraction extends Fraction {
     }// this method is used to compute improper to mixed fraction
 
     /** Method to reduce a MixedFraction */
-    /*
+    /**
         Algorithm:
             1. Create a Fraction object called obj
             2. Call the mixedFractionToImproper method on the 'this' fraction
@@ -219,7 +219,7 @@ public class MixedFraction extends Fraction {
     }
 
     /** Method to return the mixed fraction as a string. */
-    /*
+    /**
         Algorithm:
             1. Create a string called returnStatement
             2. Create an if statement to check whether the wholeNumber variable value is 0

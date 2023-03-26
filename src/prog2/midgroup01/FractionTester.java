@@ -52,10 +52,14 @@
  〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
  */
 package prog2.midgroup01;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.RoundRectangle2D;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class FractionTester extends JFrame {
@@ -69,7 +73,7 @@ public class FractionTester extends JFrame {
     MixedFraction fraction1, fraction2; // Declared these here so that we would not declare different MixedFraction objects in each method
 
     /** Method to get user input */
-    /*
+    /**
         Process:
             This method accepts a JTextField variable as a parameter. JTextField is where the numbers are inputted
             on the GUI. To get the input from the textField in the GUI we call getText() and assign it to the variable
@@ -144,7 +148,7 @@ public class FractionTester extends JFrame {
 
 
     /** Main method to invoke a method to run the application program.*/
-    /*
+    /**
        Algorithm:
             1. Call FractionTester
      */
@@ -154,7 +158,7 @@ public class FractionTester extends JFrame {
 
 
     /** This handles the placement of the GUI components **/
-    /*
+    /**
         Process:
 
         Algorithm:
@@ -263,7 +267,7 @@ public class FractionTester extends JFrame {
 
 
         /** Event handler for addition */
-        /*
+        /**
             Algorithm:
                 1. Create add.addActionListener
                 2. Create the actionPerformed method and pass in ActionEvent
@@ -310,7 +314,7 @@ public class FractionTester extends JFrame {
         });
 
         /** Event handler for subtraction */
-        /*
+        /**
             Algorithm:
                 1. Create subtract.addActionListener
                 2. Create the actionPerformed method and pass in ActionEvent
@@ -347,7 +351,7 @@ public class FractionTester extends JFrame {
         });
 
         /** Event handler for multiplication */
-                /*
+        /**
             Algorithm:
                 1. Create an addActionListener
                 2. Create the actionPerformed method and pass in ActionEvent
@@ -384,7 +388,7 @@ public class FractionTester extends JFrame {
         });
 
         /** Event handler for division */
-        /*
+        /**
             Algorithm:
                 1. Create an addActionListener
                 2. Create the actionPerformed method and pass in ActionEvent
@@ -421,7 +425,7 @@ public class FractionTester extends JFrame {
         });
 
         /** Event handler for reduce fraction */
-                /*
+        /**
             Algorithm:
                 1. Create an addActionListener
                 2. Create the actionPerformed method and pass in ActionEvent

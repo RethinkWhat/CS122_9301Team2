@@ -45,7 +45,7 @@ public class Fraction {
 
     /**
      * Method to get the numerator value of the fraction.*/
-    /*
+    /**
        Algorithm:
        1. Return the numerator of the fraction.
      */
@@ -56,7 +56,7 @@ public class Fraction {
 
     /**
      * Method to set the numerator value of the fraction.*/
-    /*
+    /**
        Algorithm:
        1. Accept the numerator as input from the user.
        2. Set the numerator of the fraction to the entered value.
@@ -67,7 +67,7 @@ public class Fraction {
 
     /**
      * Method to get the denominator value of the fraction.*/
-    /*
+    /**
        Algorithm:
        1. Return the denominator of the fraction.
      */
@@ -78,7 +78,7 @@ public class Fraction {
 
     /**
      * Method to set the denominator value of the fraction.*/
-    /*
+    /**
        Algorithm:
        1. Accept the denominator as input from the user.
        2. Set the denominator of the fraction to the entered value.
@@ -90,7 +90,7 @@ public class Fraction {
 
     /**
      * Method to return the fraction as a string.*/
-    /*
+    /**
         Algorithm:
         1. Return the numerator and the denominator as a single string.
     */
@@ -101,7 +101,7 @@ public class Fraction {
 
     /**
      * Method to get the decimal equivalent of the fraction.*/
-    /*
+    /**
         Algorithm:
         1. Convert the numerator and the denominator into a double data type.
         2. Divide the numerator to the denominator to get its decimal equivalent.
@@ -114,7 +114,7 @@ public class Fraction {
 
     /**
      * Method to multiply the Fraction and the otherFraction.*/
-    /*
+    /**
         Algorithm:
         1. Declare "product" as a Fraction variable with int numerator and int denominator.
         2. Multiply the value of Fraction numerator to the otherFraction numerator.
@@ -131,7 +131,7 @@ public class Fraction {
 
     /**
      * Method to divide the Fraction and the otherFraction.*/
-    /*
+    /**
         Algorithm:
         1. Declare "quotient" as a Fraction variable with int numerator and int denominator.
         2. Multiply the value of Fraction numerator to the otherFraction denominator.
@@ -148,7 +148,7 @@ public class Fraction {
 
     /**
      * Method to add the Fraction and the otherFraction.*/
-    /*
+    /**
         Algorithm:
         1. Find the commonDenominator of the 2 fractions by declaring the leastCommonMultiple method.
         2. Find the numerator of each fraction.
@@ -172,7 +172,7 @@ public class Fraction {
 
     /**
      * Method to subtract the Fraction and the otherFraction.*/
-    /*
+    /**
         Algorithm:
         1. Find the commonDenominator of the 2 fractions by declaring the leastCommonMultiple method.
         2. Find the numerator of each fraction.
@@ -195,7 +195,7 @@ public class Fraction {
 
     /**
      * Method to reduce the fraction.*/
-    /*
+    /**
         Algorithm:
         1. Declare "i" as an int variable.
         2. Check if the denominator is greater than the numerator.
@@ -223,7 +223,7 @@ public class Fraction {
 
     /**
      * Recursive method for computing the greatestCommonDivisor of the 2 numbers.*/
-    /*
+    /**
         Algorithm:
         1. If the firstNumber is equal to 0 return secondNumber.
         2. Else make a recursion method by calling the computerGCD method with the following as its parameters:
@@ -238,7 +238,7 @@ public class Fraction {
 
     /**
      * Method for computing the leastCommonMultiple of the 2 numbers.*/
-    /*
+    /**
         Algorithm:
         1. return the value of the following formula:
             firstNumber multiplied by the secondNumber divided by the GCD of the first and second number.
