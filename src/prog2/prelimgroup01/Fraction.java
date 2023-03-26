@@ -33,95 +33,111 @@ public class Fraction {
     private int numerator;
     private int denominator;
 
+    /**
+     * This is the default constructor because it has no arguments.
+     */
     public Fraction() {
         this.numerator = 0;
         this.denominator = 0;
     }
 
+    /**
+     * This constructor is used to initialize the numerator and denominator instance variables.
+     *
+     * @param numerator
+     *        integer representation of the numerator
+     * @param denominator
+     *        integer representation of the denominator
+     */
     public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
     }
 
     /**
-     * Method to get the numerator value of the fraction.*/
-    /**
-       Algorithm:
-       1. Return the numerator of the fraction.
+     * This is the method to get the numerator value of the fraction.
+     *
+     * @return numerator
      */
-
+    //      Algorithm:
+    //        1. Return the numerator of the fraction.
     public int getNumerator() {
         return this.numerator;
     }
 
     /**
-     * Method to set the numerator value of the fraction.*/
-    /**
-       Algorithm:
-       1. Accept the numerator as input from the user.
-       2. Set the numerator of the fraction to the entered value.
+     * This method is to set the numerator value of the fraction.
+     *
+     * @param numerator
+     *        integer representation of the numerator
      */
+    //Algorithm:
+    //       1. Accept the numerator as input from the user.
+    //       2. Set the numerator of the fraction to the entered value.
     public void setNumerator(int numerator) {
         this.numerator = numerator;
     }
 
     /**
-     * Method to get the denominator value of the fraction.*/
-    /**
-       Algorithm:
-       1. Return the denominator of the fraction.
+     * This is the method to get the denominator value of the fraction.
+     *
+     * @return denominator
      */
-
+    //Algorithm:
+    //       1. Return the denominator of the fraction.
     public int getDenominator() {
         return this.denominator;
     }
 
     /**
-     * Method to set the denominator value of the fraction.*/
-    /**
-       Algorithm:
-       1. Accept the denominator as input from the user.
-       2. Set the denominator of the fraction to the entered value.
+     * This is the method to set the denominator value of the fraction.
+     *
+     * @param denominator
+     *        integer representation of the denominator
      */
-
+    //Algorithm:
+    //       1. Accept the denominator as input from the user.
+    //       2. Set the denominator of the fraction to the entered value.
     public void setDenominator(int denominator) {
         this.denominator = denominator;
     }
 
     /**
-     * Method to return the fraction as a string.*/
-    /**
-        Algorithm:
-        1. Return the numerator and the denominator as a single string.
-    */
-
+     * This is the method to return the fraction as a string.
+     *
+     * @return {@code this numerator / this denominator}
+     */
+    //Algorithm:
+    //        1. Return the numerator and the denominator as a single string.
     public String toString() {
         return this.numerator + "/" + this.denominator;
     }
 
     /**
-     * Method to get the decimal equivalent of the fraction.*/
-    /**
-        Algorithm:
-        1. Convert the numerator and the denominator into a double data type.
-        2. Divide the numerator to the denominator to get its decimal equivalent.
-    */
-
+     * This is the method to get the decimal equivalent of the fraction.
+     *
+     * @return decimal equivalent of a fraction
+     */
+    //Algorithm:
+    //        1. Convert the numerator and the denominator into a double data type.
+    //        2. Divide the numerator to the denominator to get its decimal equivalent.
     public double decimalEquivalent() {
         double decimal = (double)this.numerator / (double)this.denominator;
         return Math.round(decimal*100.0) /100.0;
     }
 
     /**
-     * Method to multiply the Fraction and the otherFraction.*/
-    /**
-        Algorithm:
-        1. Declare "product" as a Fraction variable with int numerator and int denominator.
-        2. Multiply the value of Fraction numerator to the otherFraction numerator.
-        3. Multiply the value of Fraction denominator to the otherFraction denominator.
-        4. return the "product" variable.
-    */
-
+     * This method is to multiply the Fraction and the otherFraction.
+     *
+     * @param otherFraction
+     *        {@code Fraction} representation of otherFraction
+     * @return product
+     */
+    //Algorithm:
+    //        1. Declare "product" as a Fraction variable with int numerator and int denominator.
+    //        2. Multiply the value of Fraction numerator to the otherFraction numerator.
+    //        3. Multiply the value of Fraction denominator to the otherFraction denominator.
+    //        4. return the "product" variable.
     public Fraction multiplyFraction(Fraction otherFraction) {
         Fraction product = new Fraction();
         product.numerator = this.numerator * otherFraction.numerator;
@@ -130,15 +146,17 @@ public class Fraction {
     }
 
     /**
-     * Method to divide the Fraction and the otherFraction.*/
-    /**
-        Algorithm:
-        1. Declare "quotient" as a Fraction variable with int numerator and int denominator.
-        2. Multiply the value of Fraction numerator to the otherFraction denominator.
-        3. Multiply the value of Fraction denominator to the otherFraction numerator.
-        4. return the "quotient" variable.
-    */
-
+     * This is the method to divide the Fraction and the otherFraction.
+     *
+     * @param otherFraction
+     *        {@code Fraction} representation of otherFraction
+     * @return quotient
+     */
+    //Algorithm:
+    //        1. Declare "quotient" as a Fraction variable with int numerator and int denominator.
+    //        2. Multiply the value of Fraction numerator to the otherFraction denominator.
+    //        3. Multiply the value of Fraction denominator to the otherFraction numerator.
+    //        4. return the "quotient" variable.
     public Fraction divideFraction(Fraction otherFraction) {
         Fraction quotient = new Fraction();
         quotient.numerator = this.numerator * otherFraction.denominator;
@@ -147,19 +165,21 @@ public class Fraction {
     }
 
     /**
-     * Method to add the Fraction and the otherFraction.*/
-    /**
-        Algorithm:
-        1. Find the commonDenominator of the 2 fractions by declaring the leastCommonMultiple method.
-        2. Find the numerator of each fraction.
-          2.1. Multiply the first numerator to the quotient of the commonDenominator and the first denominator.
-          2.2. Multiply the second numerator to the quotient of the commonDenominator and the second denominator.
-        3. Find the addedNumerator by adding the 2 new numerators computed.
-        4. Declare "sum" as a Fraction variable with addedNumerator and commonDenominator as its parameters.
-        5.Call the reduceFraction method.
-        6. Return the "sum" variable.
-    */
-
+     * This is the method to add the Fraction and the otherFraction.
+     *
+     * @param otherFraction
+     *        {@code Fraction} representation of otherFraction
+     * @return sum
+     */
+    //Algorithm:
+    //        1. Find the commonDenominator of the 2 fractions by declaring the leastCommonMultiple method.
+    //        2. Find the numerator of each fraction.
+    //          2.1. Multiply the first numerator to the quotient of the commonDenominator and the first denominator.
+    //          2.2. Multiply the second numerator to the quotient of the commonDenominator and the second denominator.
+    //        3. Find the addedNumerator by adding the 2 new numerators computed.
+    //        4. Declare "sum" as a Fraction variable with addedNumerator and commonDenominator as its parameters.
+    //        5.Call the reduceFraction method.
+    //        6. Return the "sum" variable.
     public Fraction addFraction(Fraction otherFraction) {
         int commonDenominator = this.leastCommonMultiple(this.denominator, otherFraction.denominator);
         int numerator1 = this.numerator * (commonDenominator / this.denominator);
@@ -171,7 +191,12 @@ public class Fraction {
     }
 
     /**
-     * Method to subtract the Fraction and the otherFraction.*/
+     * This is the method to subtract the Fraction and the otherFraction.
+     *
+     * @param otherFraction
+     *        {@code Fraction} representation of otherFraction
+     * @return difference
+     */
     /**
         Algorithm:
         1. Find the commonDenominator of the 2 fractions by declaring the leastCommonMultiple method.
@@ -194,16 +219,15 @@ public class Fraction {
     }
 
     /**
-     * Method to reduce the fraction.*/
-    /**
-        Algorithm:
-        1. Declare "i" as an int variable.
-        2. Check if the denominator is greater than the numerator.
-            2.1. If the denominator is greater than the numerator, the variable "i" will be equal to the numerator.
-            2.2. If the numerator is greater than the denominator, the variable "i" will be equal to the denominator.
-        3. Make a for loop that will reduce the numerator and the denominator if the numerator and the denominator
-           modulo the "i" is equal to zero.
-    */
+     * This is the method to reduce the fraction.
+     */
+    //Algorithm:
+    //        1. Declare "i" as an int variable.
+    //        2. Check if the denominator is greater than the numerator.
+    //            2.1. If the denominator is greater than the numerator, the variable "i" will be equal to the numerator.
+    //            2.2. If the numerator is greater than the denominator, the variable "i" will be equal to the denominator.
+    //        3. Make a for loop that will reduce the numerator and the denominator if the numerator and the denominator
+    //           modulo the "i" is equal to zero.
     public void reduceFraction() {
         int i;
         if (this.denominator > this.numerator) {
@@ -222,14 +246,19 @@ public class Fraction {
     }
 
     /**
-     * Recursive method for computing the greatestCommonDivisor of the 2 numbers.*/
-    /**
-        Algorithm:
-        1. If the firstNumber is equal to 0 return secondNumber.
-        2. Else make a recursion method by calling the computerGCD method with the following as its parameters:
-            a. secondNumber modulo '%' by firstNumber
-            b. firstNumber
-    */
+     * Recursive method for computing the greatestCommonDivisor of the 2 numbers.
+     *
+     * @param firstNumber
+     *        integer representation of the first number
+     * @param secondNumber
+     *        integer representation of the second number
+     * @return the returnGCD of the firstNumber and secondNumber
+     */
+    //Algorithm:
+    //        1. If the firstNumber is equal to 0 return secondNumber.
+    //        2. Else make a recursion method by calling the computerGCD method with the following as its parameters:
+    //            a. secondNumber modulo '%' by firstNumber
+    //            b. firstNumber
     public int computeGCD(int firstNumber, int secondNumber) {
         if (firstNumber == 0)
             return secondNumber;
@@ -237,12 +266,17 @@ public class Fraction {
     }
 
     /**
-     * Method for computing the leastCommonMultiple of the 2 numbers.*/
-    /**
-        Algorithm:
-        1. return the value of the following formula:
-            firstNumber multiplied by the secondNumber divided by the GCD of the first and second number.
-    */
+     * This is the method for computing the leastCommonMultiple of the two numbers.
+     *
+     * @param firstNumber
+     *        integer representation of the first number
+     * @param secondNumber
+     *        integer representation of the second number
+     * @return firstNumber * secondNumber / computeGCD(firstNumber, secondNumber)
+     */
+    //Algorithm:
+    //        1. return the value of the following formula:
+    //            firstNumber multiplied by the secondNumber divided by the GCD of the first and second number.
     public int leastCommonMultiple(int firstNumber, int secondNumber) {
         return firstNumber * secondNumber / this.computeGCD(firstNumber, secondNumber);
     }

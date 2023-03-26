@@ -164,60 +164,58 @@ public class FractionArithmetic {
     }
 
     /**
-     * Main method to invoke a method to run the application program.*/
-    /**
-       Algorithm:
-       1. Invoke the run method.
+     * Main method to invoke a method to run the application program.
      */
+    //Algorithm:
+    //       1. Invoke the run method.
     public static void main(String[] args) {
         run();
     }// end of main method
 
     /**
-     * Method to execute the application program.*/
-    /**
-       Algorithm:
-       1. Declare local variables
-       2. Invoke the showIntroduction method
-       3. Implement a do-while statement that shows and reads the menu choice of the user
-          input where the entered number should not be invalid and exceed the available
-          choices.
-       4. Invoke the showChoices method.
-       5. If the user input for the value of the first fraction and second fraction does not exist. Only let
-          the user choose limited program choices in a main menu where the user can only choose to do an input
-          of the first and second fraction or exit the program before proceeding to other available program choices.
-       6. Reassign the value of integer variable "choiceUpperLimit" to 3.
-       7. Read the integer through user input that corresponds to the user's choice. Give an appropriate statement
-          if the input is invalid.
-       8. Implement a switch-case statement that provides cases for a specific routine.
-       9. If integer equal to 1 is entered, the program will request the value of the first fraction.
-       10. Invoke the requestFraction1 method.
-       11. If integer equal to 2 is entered, the program will proceed request the value of the first fraction.
-       12. Invoke the requestFraction2 method.
-       13. If the user input for the value of the first fraction and second fraction does exist. Let the user
-           be able to choose from all the available program choices shown in a main menu.
-       14. Reassign the value of integer variable "choiceUpperLimit" to 8.
-       15. Read the integer through user input that corresponds to the user's choice. Give an appropriate statement
-           if the input is invalid.
-       16. If integer equal to 3 is entered, the program will proceed to the addition of two fractions.
-       17. Invoke the addition method while passing the fraction1 and fraction2 Fraction variables.
-       18. Invoke the pressKey method.
-       19. If integer equal to 4 is entered, the program will proceed to the subtraction of two fractions.
-       20. Invoke the subtraction method while passing the fraction1 and fraction2 Fraction variables.
-       21. Invoke the pressKey method.
-       22. If integer equal to 5 is entered, the program will proceed to the multiplication of two fractions.
-       23. Invoke the multiplication method while passing the fraction1 and fraction2 Fraction variables.
-       24. Invoke the pressKey method.
-       25. If integer equal to 6 is entered, the program will proceed to the division of two fractions.
-       26. Invoke the division method while passing the fraction1 and fraction2 Fraction variables.
-       27. Invoke the pressKey method.
-       28. If integer equal to 7 is entered, the program will proceed to the reduction
-           of a fraction to the lowest terms.
-       29. Invoke the reduce method while passing the value of a fraction from invoking the requestFraction method.
-       30. Invoke the pressKey method.
-       31. If integer equal to 8 is entered, the program will proceed to display a closing statement of the program
-           and exit the program.
+     * Method to execute the application program.
      */
+    //Algorithm:
+    //       1. Declare local variables
+    //       2. Invoke the showIntroduction method
+    //       3. Implement a do-while statement that shows and reads the menu choice of the user
+    //          input where the entered number should not be invalid and exceed the available
+    //          choices.
+    //       4. Invoke the showChoices method.
+    //       5. If the user input for the value of the first fraction and second fraction does not exist. Only let
+    //          the user choose limited program choices in a main menu where the user can only choose to do an input
+    //          of the first and second fraction or exit the program before proceeding to other available program choices.
+    //       6. Reassign the value of integer variable "choiceUpperLimit" to 3.
+    //       7. Read the integer through user input that corresponds to the user's choice. Give an appropriate statement
+    //          if the input is invalid.
+    //       8. Implement a switch-case statement that provides cases for a specific routine.
+    //       9. If integer equal to 1 is entered, the program will request the value of the first fraction.
+    //       10. Invoke the requestFraction1 method.
+    //       11. If integer equal to 2 is entered, the program will proceed request the value of the first fraction.
+    //       12. Invoke the requestFraction2 method.
+    //       13. If the user input for the value of the first fraction and second fraction does exist. Let the user
+    //           be able to choose from all the available program choices shown in a main menu.
+    //       14. Reassign the value of integer variable "choiceUpperLimit" to 8.
+    //       15. Read the integer through user input that corresponds to the user's choice. Give an appropriate statement
+    //           if the input is invalid.
+    //       16. If integer equal to 3 is entered, the program will proceed to the addition of two fractions.
+    //       17. Invoke the addition method while passing the fraction1 and fraction2 Fraction variables.
+    //       18. Invoke the pressKey method.
+    //       19. If integer equal to 4 is entered, the program will proceed to the subtraction of two fractions.
+    //       20. Invoke the subtraction method while passing the fraction1 and fraction2 Fraction variables.
+    //       21. Invoke the pressKey method.
+    //       22. If integer equal to 5 is entered, the program will proceed to the multiplication of two fractions.
+    //       23. Invoke the multiplication method while passing the fraction1 and fraction2 Fraction variables.
+    //       24. Invoke the pressKey method.
+    //       25. If integer equal to 6 is entered, the program will proceed to the division of two fractions.
+    //       26. Invoke the division method while passing the fraction1 and fraction2 Fraction variables.
+    //       27. Invoke the pressKey method.
+    //       28. If integer equal to 7 is entered, the program will proceed to the reduction
+    //           of a fraction to the lowest terms.
+    //       29. Invoke the reduce method while passing the value of a fraction from invoking the requestFraction method.
+    //       30. Invoke the pressKey method.
+    //       31. If integer equal to 8 is entered, the program will proceed to display a closing statement of the program
+    //           and exit the program.
     public static void run() {
         Fraction fraction1 = new Fraction();
         Fraction fraction2 = new Fraction();
@@ -286,11 +284,10 @@ public class FractionArithmetic {
 
     /**
      * Method to print an introduction statement that displays information about the purpose
-     * of the program and guidelines for the user.*/
-    /**
-       Algorithm:
-       1. Print an introduction statement of the program.
+     * of the program and guidelines for the user.
      */
+    //Algorithm:
+    //       1. Print an introduction statement of the program.
     public static void showIntroduction() {
         System.out.print("""
                 
@@ -307,15 +304,14 @@ public class FractionArithmetic {
     } // end of showIntroduction method
 
     /**
-     * Method to display the available choices for the user to pick from.*/
-     /**
-       Algorithm:
-       1. Declare local variable
-       2. If the user input for the value of the first fraction and second fraction does not exist.
-          Only print the 1st, 2nd, and 3rd choices of the program in a main menu.
-       3. If the user input for the value of the first fraction and second fraction does exist. Print
-          all the available program choices shown in a main menu.
+     * Method to display the available choices for the user to pick from.
      */
+     //Algorithm:
+    //       1. Declare local variable
+    //       2. If the user input for the value of the first fraction and second fraction does not exist.
+    //          Only print the 1st, 2nd, and 3rd choices of the program in a main menu.
+    //       3. If the user input for the value of the first fraction and second fraction does exist. Print
+    //          all the available program choices shown in a main menu.
     public static void showChoices() {
         int i = 4, x=3;
 
@@ -338,18 +334,23 @@ public class FractionArithmetic {
     } // end of showChoices method
 
     /**
-     * Method that reads the user input of a chosen number that corresponds to a specific choice.*/
-     /**
-       Algorithm:
-       1. Declare the local variables.
-       2. Implement a do-while statement that reads the menu choice of the user input
-          where the entered number should not be invalid and exceed the available
-          choices.
-       3. Implement a try-catch statement to prevent user without input and determine if
-          the input has the appropriate format.
-       4. Give an appropriate statement if the input is invalid.
-       5. Return the integer variable "pick".
+     * Method that reads the user input of a chosen number that corresponds to a specific choice.
+     *
+     * @param max
+     *        integer representation of min
+     * @param min
+     *        integer representation of max
+     * @return the integer variable pick
      */
+     //Algorithm:
+    //       1. Declare the local variables.
+    //       2. Implement a do-while statement that reads the menu choice of the user input
+    //          where the entered number should not be invalid and exceed the available
+    //          choices.
+    //       3. Implement a try-catch statement to prevent user without input and determine if
+    //          the input has the appropriate format.
+    //       4. Give an appropriate statement if the input is invalid.
+    //       5. Return the integer variable "pick".
     public static int enterPick(int min, int max) {
         int pick = 0;
         boolean flag;
@@ -372,22 +373,23 @@ public class FractionArithmetic {
     } // end of enterPick method
 
     /**
-     * Method that reads the user input of the numerator and denominator of a fraction.*/
-     /**
-       Algorithm:
-       1. Declare local variables.
-       2. Implement a do-while statement that reads the numerator of a fraction through user input.
-       3. Implement a try-catch statement to prevent user without input and determine if
-          the input has the appropriate format.
-       4. Give an appropriate statement if the input is invalid.
-       5. Implement a do-while statement that reads the denominator of a fraction through user input where
-          the denominator should not be equal to 0 to avoid an undefined result.
-       6. Implement a try-catch statement to prevent user without input and determine if
-          the input has the appropriate format.
-       7. Give an appropriate statement if the input is invalid.
-       8. Declare "fraction" as a new Fraction variable with int numerator and int denominator.
-       9. Return the Fraction variable "fraction".
+     * Method that reads the user input of the numerator and denominator of a fraction.
+     *
+     * @return the {@code Fraction} variable fraction
      */
+     //Algorithm:
+    //       1. Declare local variables.
+    //       2. Implement a do-while statement that reads the numerator of a fraction through user input.
+    //       3. Implement a try-catch statement to prevent user without input and determine if
+    //          the input has the appropriate format.
+    //       4. Give an appropriate statement if the input is invalid.
+    //       5. Implement a do-while statement that reads the denominator of a fraction through user input where
+    //          the denominator should not be equal to 0 to avoid an undefined result.
+    //       6. Implement a try-catch statement to prevent user without input and determine if
+    //          the input has the appropriate format.
+    //       7. Give an appropriate statement if the input is invalid.
+    //       8. Declare "fraction" as a new Fraction variable with int numerator and int denominator.
+    //       9. Return the Fraction variable "fraction".
     public static Fraction requestFraction() {
         int numerator = 0;
         int denominator = 0;
@@ -422,18 +424,19 @@ public class FractionArithmetic {
     } // end of requestFraction method
 
     /**
-     * Method to read the user input of the numerator and denominator of the first fraction.*/
-     /**
-       Algorithm:
-       1. Print an appropriate statement to indicate that the user is entering a value of the first fraction.
-       2. Declare "fraction1" as a Fraction variable with int numerator and int denominator.
-       3. Invoke the requestFraction method to read the value of the first fraction through user input.
-       4. Declare "decimalEq1" as a double variable with the decimal equivalent value of fraction1.
-       5. Print the value of the first fraction and its decimal equivalent.
-       6. Let the boolean variable "input1Exists" equal to true value.
-       7. Invoke the pressKey method.
-       8. Return the Fraction variable "fraction1".
+     * Method to read the user input of the numerator and denominator of the first fraction.
+     *
+     * @return {@code Fraction} variable fraction1
      */
+     //Algorithm:
+    //       1. Print an appropriate statement to indicate that the user is entering a value of the first fraction.
+    //       2. Declare "fraction1" as a Fraction variable with int numerator and int denominator.
+    //       3. Invoke the requestFraction method to read the value of the first fraction through user input.
+    //       4. Declare "decimalEq1" as a double variable with the decimal equivalent value of fraction1.
+    //       5. Print the value of the first fraction and its decimal equivalent.
+    //       6. Let the boolean variable "input1Exists" equal to true value.
+    //       7. Invoke the pressKey method.
+    //       8. Return the Fraction variable "fraction1".
     public static Fraction requestFraction1() {
         System.out.println("\nYou are now entering the value of Fraction 1.");
         Fraction fraction1 = requestFraction();
@@ -445,18 +448,19 @@ public class FractionArithmetic {
     } // end of requestFraction1 method
 
     /**
-     * Method to read the user input of the numerator and denominator of the second fraction.*/
-     /**
-       Algorithm:
-       1. Print an appropriate statement to indicate that the user is entering a value of the second fraction.
-       2. Declare "fraction2" as a Fraction variable with int numerator and int denominator.
-       3. Invoke the requestFraction method to read the value of the first fraction through user input.
-       4. Declare "decimalEq2" as a double variable with the decimal equivalent value of fraction1.
-       5. Print the value of the first fraction and its decimal equivalent.
-       6. Let the boolean variable "input2Exists" equal to true value.
-       7. Invoke the pressKey method.
-       8. Return the Fraction variable "fraction2".
+     * Method to read the user input of the numerator and denominator of the second fraction.
+     *
+     * @return {@code Fraction} variable fraction2
      */
+     //Algorithm:
+    //       1. Print an appropriate statement to indicate that the user is entering a value of the second fraction.
+    //       2. Declare "fraction2" as a Fraction variable with int numerator and int denominator.
+    //       3. Invoke the requestFraction method to read the value of the first fraction through user input.
+    //       4. Declare "decimalEq2" as a double variable with the decimal equivalent value of fraction1.
+    //       5. Print the value of the first fraction and its decimal equivalent.
+    //       6. Let the boolean variable "input2Exists" equal to true value.
+    //       7. Invoke the pressKey method.
+    //       8. Return the Fraction variable "fraction2".
     public static Fraction requestFraction2() {
         System.out.println("\nYou are now entering the value of Fraction 2.");
         Fraction fraction2 = requestFraction();
@@ -468,15 +472,19 @@ public class FractionArithmetic {
     } // end of requestFraction2 method
 
     /**
-     * Method to add two fractions (fraction1 and otherFraction)*/
-    /**
-       Algorithm:
-       1. Declare "sum" as a Fraction variable with int numerator and int denominator.
-       2. Add the value of the first fraction to the other fraction.
-       3. Declare "sumDecimal" as a double variable with the decimal equivalent value
-          of the sum of the two fractions.
-       4. Print the sum value of the two fractions and its decimal equivalent.
+     * Method to add two fractions (fraction1 and otherFraction)
+     *
+     * @param fraction1
+     *        {@code Fraction} representation of fraction1
+     * @param otherFraction
+     *        {@code Fraction} representation of other
      */
+    //Algorithm:
+    //       1. Declare "sum" as a Fraction variable with int numerator and int denominator.
+    //       2. Add the value of the first fraction to the other fraction.
+    //       3. Declare "sumDecimal" as a double variable with the decimal equivalent value
+    //          of the sum of the two fractions.
+    //       4. Print the sum value of the two fractions and its decimal equivalent.
     public static void addition(Fraction fraction1, Fraction otherFraction) {
         Fraction sum = fraction1.addFraction(otherFraction);
         double sumDecimal = sum.decimalEquivalent();
@@ -484,15 +492,19 @@ public class FractionArithmetic {
     } // end of addition method
 
     /**
-     * Method to subtract the fractions (fraction1 and otherFraction)*/
-    /**
-       Algorithm:
-       1. Declare "difference" as a Fraction variable with int numerator and int denominator.
-       2. Subtract the value of the first fraction to the other fraction.
-       3. Declare "differenceDecimal" as a double variable with the decimal equivalent value
-          of the difference of the two fractions.
-       4. Print the difference value of the two fractions and its decimal equivalent.
+     * Method to subtract the fractions (fraction1 and otherFraction)
+     *
+     * @param otherFraction
+     *        {@code Fraction} representation of other
+     * @param fraction1
+     *        {@code Fraction} representation of fraction1
      */
+    //Algorithm:
+    //       1. Declare "difference" as a Fraction variable with int numerator and int denominator.
+    //       2. Subtract the value of the first fraction to the other fraction.
+    //       3. Declare "differenceDecimal" as a double variable with the decimal equivalent value
+    //          of the difference of the two fractions.
+    //       4. Print the difference value of the two fractions and its decimal equivalent.
     public static void subtraction(Fraction fraction1, Fraction otherFraction) {
         Fraction difference = fraction1.subtractFraction(otherFraction);
         double differenceDecimal = difference.decimalEquivalent();
@@ -501,15 +513,19 @@ public class FractionArithmetic {
     } // end of subtraction method
 
     /**
-     * Method to multiply two fractions (fraction1 and otherFraction)*/
-    /**
-       Algorithm:
-       1. Declare "product" as a Fraction variable with int numerator and int denominator.
-       2. Multiply the value of the first fraction to the other fraction.
-       3. Declare "productDecimal" as a double variable with the decimal equivalent value
-          of the product of the two fractions.
-       4. Print the product value of the two fractions and its decimal equivalent.
+     * Method to multiply two fractions (fraction1 and otherFraction)
+     *
+     * @param otherFraction
+     *        {@code Fraction} representation of other
+     * @param fraction1
+     *        {@code Fraction} representation of fraction1
      */
+    // Algorithm:
+    //       1. Declare "product" as a Fraction variable with int numerator and int denominator.
+    //       2. Multiply the value of the first fraction to the other fraction.
+    //       3. Declare "productDecimal" as a double variable with the decimal equivalent value
+    //          of the product of the two fractions.
+    //       4. Print the product value of the two fractions and its decimal equivalent.
     public static void multiplication(Fraction fraction1, Fraction otherFraction) {
         Fraction product = fraction1.multiplyFraction(otherFraction);
         double productDecimal = product.decimalEquivalent();
@@ -518,15 +534,19 @@ public class FractionArithmetic {
     } // end of multiplication method
 
     /**
-     * Method to divide two fractions (fraction1 and otherFraction)*/
-    /**
-       Algorithm:
-       1. Declare "quotient" as a Fraction variable with int numerator and int denominator.
-       2. Divide the value of the first fraction to the other fraction.
-       3. Declare "quotientDecimal" as a double variable with the decimal equivalent value
-          of the quotient of the two fractions.
-       4. Print the quotient value of the two fractions and its decimal equivalent.
+     * Method to divide two fractions (fraction1 and otherFraction)
+     *
+     * @param otherFraction
+     *        {@code Fraction} representation of other
+     * @param fraction1
+     *        {@code Fraction} representation of fraction1
      */
+    //Algorithm:
+    //       1. Declare "quotient" as a Fraction variable with int numerator and int denominator.
+    //       2. Divide the value of the first fraction to the other fraction.
+    //       3. Declare "quotientDecimal" as a double variable with the decimal equivalent value
+    //          of the quotient of the two fractions.
+    //       4. Print the quotient value of the two fractions and its decimal equivalent.
     public static void division(Fraction fraction1, Fraction otherFraction) {
         Fraction quotient = fraction1.divideFraction(otherFraction);
         double quotientDecimal = quotient.decimalEquivalent();
@@ -535,15 +555,17 @@ public class FractionArithmetic {
     } // end of division method
 
     /**
-     * Method to reduce a fraction to the lowest terms.*/
-    /**
-       Algorithm:
-       1. Print the original value of the fraction to be reduced with an appropriate statement.
-       2. Reduce the original value of the fraction to the lowest terms.
-       3. Declare "decimal" as a double variable with the decimal equivalent value
-          of the lowest term of the fraction.
-       4. Print the lowest term value of the fraction and its decimal equivalent.
+     * Method to reduce a fraction to the lowest terms.
+     *
+     * @param fractionToBeReduced
+     *        {@code Fraction} representation of fractionToBeReduced
      */
+    //Algorithm:
+    //       1. Print the original value of the fraction to be reduced with an appropriate statement.
+    //       2. Reduce the original value of the fraction to the lowest terms.
+    //       3. Declare "decimal" as a double variable with the decimal equivalent value
+    //          of the lowest term of the fraction.
+    //       4. Print the lowest term value of the fraction and its decimal equivalent.
     public static void reduce(Fraction fractionToBeReduced) {
         System.out.print("\n" + fractionToBeReduced + " in lowest terms is ");
         fractionToBeReduced.reduceFraction();
@@ -552,12 +574,11 @@ public class FractionArithmetic {
     } // end of reduce method
 
     /**
-     * Method to read the user input of the enter key.*/
-    /**
-       Algorithm:
-       1. Read the user input of the enter key
-       2. Advance the scanner to the next line.
+     * Method to read the user input of the enter key.
      */
+    //Algorithm:
+    //       1. Read the user input of the enter key
+    //       2. Advance the scanner to the next line.
     public static void pressKey() {
         System.out.println();
         System.out.println("Press the enter key to return to menu.");
@@ -565,12 +586,11 @@ public class FractionArithmetic {
     } // end of pressKey method
 
     /**
-     * Method to display the program closing statement.*/
-    /**
-       Algorithm:
-       1. Print the program closing statement.
-       2. Exit by terminating the program.
+     * Method to display the program closing statement.
      */
+    //Algorithm:
+    //       1. Print the program closing statement.
+    //       2. Exit by terminating the program.
     public static void showExit() {
         System.out.println(" ");
         System.out.println("+------------------------------------------+");
@@ -581,12 +601,10 @@ public class FractionArithmetic {
         System.exit(0);
     } // end of showExit method
 
-    /**
-       Algorithm:
-       1. Declare "keyboard" as a new scanner for FractionArithmetic class.
-       2. Declare "input1Exists" as a boolean variable with value "false".
-       3. Declare "input2Exists" as a boolean variable with value "false".
-     */
+    //Algorithm:
+    //       1. Declare "keyboard" as a new scanner for FractionArithmetic class.
+    //       2. Declare "input1Exists" as a boolean variable with value "false".
+    //       3. Declare "input2Exists" as a boolean variable with value "false".
     static {
         keyboard = new Scanner(System.in);
         input1Exists = false;
