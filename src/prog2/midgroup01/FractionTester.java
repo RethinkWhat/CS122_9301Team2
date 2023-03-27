@@ -103,6 +103,7 @@ public class FractionTester extends JFrame {
     MixedFraction fraction1, fraction2;
 
     /**
+     * Process:
      * This is a method to get the user's input. To get the input from the textField in the
      * GUI we call getText() and assign it to the variable input. Then we create a String array object
      * called fractionString with length 3 to hold the whole number, numerator, and denominator that would be
@@ -184,8 +185,6 @@ public class FractionTester extends JFrame {
     /**
      * This handles the placement of the GUI components.
      */
-    //Process:
-    //
     //      Algorithm:
     //        1. Set the appropriate specifications of the GUI including, dimension, layout option, visibility, and the
     //           default close operation
