@@ -362,7 +362,7 @@ public class FractionArithmetic {
                 pick = Integer.parseInt(keyboard.nextLine());
                 if (pick < min || pick > max)
                     System.out.println("Invalid input! Please ensure that you enter a number from " + min +
-                            " to " + max + ".");
+                            " to " + max + "");
             } catch (NumberFormatException var5) {
                 flag = true;
                 System.out.println("Invalid input! Please enter a valid number.");
@@ -441,7 +441,7 @@ public class FractionArithmetic {
         System.out.println("\nYou are now entering the value of Fraction 1.");
         Fraction fraction1 = requestFraction();
         double decimalEq1 = fraction1.decimalEquivalent();
-        System.out.println("Value of Fraction 1: " + fraction1 + " or " + decimalEq1 + ".");
+        System.out.println("Value of Fraction 1: " + fraction1 + " or " + decimalEq1 + "");
         input1Exists = true;
         pressKey();
         return fraction1;
@@ -465,7 +465,7 @@ public class FractionArithmetic {
         System.out.println("\nYou are now entering the value of Fraction 2.");
         Fraction fraction2 = requestFraction();
         double decimalEq2 = fraction2.decimalEquivalent();
-        System.out.println("Value of Fraction 2: " + fraction2 + " or " + decimalEq2 +".");
+        System.out.println("Value of Fraction 2: " + fraction2 + " or " + decimalEq2 + "");
         input2Exists = true;
         pressKey();
         return fraction2;
@@ -488,7 +488,7 @@ public class FractionArithmetic {
     public static void addition(Fraction fraction1, Fraction otherFraction) {
         Fraction sum = fraction1.addFraction(otherFraction);
         double sumDecimal = sum.decimalEquivalent();
-        System.out.println("" + fraction1 + " plus " + otherFraction + " = " + sum + " ≈ " + sumDecimal + ".");
+        System.out.println("" + fraction1 + " plus " + otherFraction + " = " + sum + " ≈ " + sumDecimal + "");
     } // end of addition method
 
     /**
@@ -509,7 +509,7 @@ public class FractionArithmetic {
         Fraction difference = fraction1.subtractFraction(otherFraction);
         double differenceDecimal = difference.decimalEquivalent();
         System.out.println("" + fraction1 + " minus " + otherFraction + " = " + difference +
-                " ≈ " + differenceDecimal +".");
+                " ≈ " + differenceDecimal + "");
     } // end of subtraction method
 
     /**
@@ -530,7 +530,7 @@ public class FractionArithmetic {
         Fraction product = fraction1.multiplyFraction(otherFraction);
         double productDecimal = product.decimalEquivalent();
         System.out.println("" + fraction1 + " multiplied by " + otherFraction + " = " + product +
-                " ≈ " + productDecimal + ".");
+                " ≈ " + productDecimal + "");
     } // end of multiplication method
 
     /**
@@ -551,7 +551,7 @@ public class FractionArithmetic {
         Fraction quotient = fraction1.divideFraction(otherFraction);
         double quotientDecimal = quotient.decimalEquivalent();
         System.out.println("" + fraction1 + " divided by " + otherFraction + " = " + quotient +
-                " ≈ " + quotientDecimal + ".");
+                " ≈ " + quotientDecimal + "");
     } // end of division method
 
     /**
@@ -570,7 +570,7 @@ public class FractionArithmetic {
         System.out.print("\n" + fractionToBeReduced + " in lowest terms is ");
         fractionToBeReduced.reduceFraction();
         double decimal = fractionToBeReduced.decimalEquivalent();
-        System.out.println(fractionToBeReduced + " or " + decimal + ".");
+        System.out.println(fractionToBeReduced + " or " + decimal + "");
     } // end of reduce method
 
     /**
