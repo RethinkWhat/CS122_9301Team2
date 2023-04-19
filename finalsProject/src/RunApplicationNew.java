@@ -157,12 +157,12 @@ public class RunApplicationNew {
     // ---------------------------------------------------- CASE 1 ----------------------------------------------------
     public void displayOnlyCourseList(String fileLocation) throws FileNotFoundException{
         inputReader = new Scanner(new FileReader(fileLocation));
-        System.out.printf("%5s%-20s%-110s%-20s%n", "", "Course No.", "Descriptive Title", "Units");
+        System.out.printf("%5s%-30s%-110s%-20s%n", "", "Course No.", "Descriptive Title", "Units");
         inputReader.nextLine();
         while (inputReader.hasNextLine()) {
             arrayOfInfo = inputReader.nextLine().split(",");
             courseObject = new Course(arrayOfInfo);
-            System.out.printf("%5s%-20s%-110s%-20s%n", "",
+            System.out.printf("%5s%-30s%-110s%-20s%n", "",
                     courseObject.getCourseNumber(),
                     courseObject.getDescriptiveTitle(),
                     courseObject.getUnits());
@@ -176,7 +176,7 @@ public class RunApplicationNew {
         int count=0;
         int x =0;
 
-        System.out.printf("%5s%-20s%-110s%-20s%-50s%n", "", "Course No.", "Descriptive Title", "Units", "Grades");
+        System.out.printf("%5s%-30s%-110s%-20s%-50s%n", "", "Course No.", "Descriptive Title", "Units", "Grades");
 
         // To pass in array to array[][]
         inputReader = new Scanner(new FileReader(user));
@@ -200,7 +200,7 @@ public class RunApplicationNew {
             arrayOfInfo = inputReader.nextLine().split(",");
             courseObject = new Course(arrayOfInfo);
             grade = checkIfGradeExistsForSubject(courseObject.getCourseNumber(), arrayOfGrades);
-            System.out.printf("%5s%-20s%-110s%-20s%-110s%n", "",
+            System.out.printf("%5s%-30s%-110s%-20s%-110s%n", "",
                     courseObject.getCourseNumber(),
                     courseObject.getDescriptiveTitle(),
                     courseObject.getUnits(),
@@ -209,9 +209,10 @@ public class RunApplicationNew {
     }
 
     public String checkIfGradeExistsForSubject(String courseNumber, String[][] arrayOfGrades) {
-        for(int count =0; arrayOfGrades[0].length <count;count++) {
-            if (courseNumber == arrayOfGrades[count][0])
+        for(int count =0; arrayOfGrades[0].length >=count-1;count++) {
+            if (courseNumber.equalsIgnoreCase(arrayOfGrades[count][0])) {
                 return arrayOfGrades[count][1];
+            }
         }
         return "Not Taken Yet";
     }
