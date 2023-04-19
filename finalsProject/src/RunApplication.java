@@ -73,10 +73,6 @@ public class RunApplication {
         return input;
     }
 
-    public String requestString(String prompt) {
-        System.out.println(prompt);
-        return keyboard.nextLine();
-    }
 
 /*
     File Format is as follows:
