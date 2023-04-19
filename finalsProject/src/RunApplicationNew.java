@@ -184,11 +184,12 @@ public class RunApplicationNew {
             count++;
             inputReader.next();
         }
-        String[][] arrayOfGrades = new String[count][2];
+        String[][] arrayOfGrades = new String[count][1];
         inputReader.close();
 
         inputReader = new Scanner(new FileReader(user));
-        while(inputReader.hasNextLine()) {
+        while(inputReader.hasNextLine()) { /** This is where it's messing up */
+            System.out.println(x);
             arrayOfGrades[x] = inputReader.nextLine().split(",");
             x++;
         }
@@ -206,6 +207,7 @@ public class RunApplicationNew {
                     courseObject.getUnits(),
                     grade);
         }
+        inputReader.close();
     }
 
     public String checkIfGradeExistsForSubject(String courseNumber, String[][] arrayOfGrades) {
