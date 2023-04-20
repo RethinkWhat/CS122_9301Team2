@@ -42,9 +42,21 @@ public class RunApplicationNew {
         String inputArray[] = input.split(", ") ;
         String lastName = inputArray[0];
         String firstName = inputArray[1];
-        System.out.println("Enter your SLU ID number");
-        System.out.print("--> ");
-        String idNumber =String.valueOf(Integer.parseInt(keyboard.nextLine()));
+        boolean error =false;
+        while(!error){
+        try{
+            System.out.println("Enter your SLU ID Number");
+            System.out.print("--> ");
+            String iDnumber = String.valueOf(Integer.parseInt(keyboard.nextLine()));
+            error = true;
+        }catch (NumberFormatException e1){
+            e1.printStackTrace();
+            System.out.println("You must enter an ID Number: ");
+        }
+        }
+//        System.out.println("Enter your SLU ID number");
+//        System.out.print("--> ");
+//        String idNumber =String.valueOf(Integer.parseInt(keyboard.nextLine()));
         String fileLocation = "finalsProject/students/" + lastName+firstName;
         try {
             inputReader = new Scanner(new FileReader(fileLocation));
