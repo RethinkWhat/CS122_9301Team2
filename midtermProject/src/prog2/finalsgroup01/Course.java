@@ -1,3 +1,5 @@
+package prog2.finalsgroup01;
+
 public class Course {
     private String courseNumber;
     private String descriptiveTitle;

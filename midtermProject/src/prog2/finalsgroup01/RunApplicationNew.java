@@ -1,3 +1,5 @@
+package prog2.finalsgroup01;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -44,13 +46,16 @@ public class RunApplicationNew {
         String firstName = inputArray[1];
         System.out.println("Enter your SLU ID number");
         System.out.print("--> ");
-        String idNumber =String.valueOf(Integer.parseInt(keyboard.nextLine()));
-        String fileLocation = "finalsProject/students/" + lastName+firstName;
+        String idNumber =keyboard.nextLine();
+        Student studentObject = new Student(idNumber, firstName, lastName);
+        String fileLocation = "midtermProject/src/prog2/finalsgroup01/students/" + studentObject.idNumber;
         try {
             inputReader = new Scanner(new FileReader(fileLocation));
         } catch(FileNotFoundException e1) {
             try {
                 printerToFile = new PrintWriter(fileLocation);
+                System.out.println("We will not restart the application in order to create your student file.");
+                System.exit(0);
             } catch(IOException e2) {
                 System.out.println("IO EXCEPTION");
             }
@@ -118,7 +123,7 @@ public class RunApplicationNew {
                 semester = "shortTerm";
                 break;
         }
-        return "finalsProject/courseList/BSCS/BSCS"+year+"/BSCS"+year+"-"+semester;
+        return "midtermProject/src/prog2/finalsgroup01/courseList/BSCS/BSCS"+year+"/BSCS"+year+"-"+semester;
     }
 
     public void pressKey(String prompt) {
@@ -188,8 +193,8 @@ public class RunApplicationNew {
         inputReader.close();
 
         inputReader = new Scanner(new FileReader(user));
+        inputReader.next();
         while(inputReader.hasNextLine()) { /** This is where it's messing up */
-            System.out.println(x);
             arrayOfGrades[x] = inputReader.nextLine().split(",");
             x++;
         }
@@ -207,13 +212,16 @@ public class RunApplicationNew {
                     courseObject.getUnits(),
                     grade);
         }
-        inputReader.close();
+        //inputReader.close();
     }
 
     public String checkIfGradeExistsForSubject(String courseNumber, String[][] arrayOfGrades) {
-        for(int count =0; arrayOfGrades[0].length >=count-1;count++) {
-            if (courseNumber.equalsIgnoreCase(arrayOfGrades[count][0])) {
-                return arrayOfGrades[count][1];
+        for(int x =0; arrayOfGrades[0].length >=x;x++) {
+          //  System.out.println(arrayOfGrades[x][0]);
+            System.out.println(courseNumber + " Compared to " + arrayOfGrades[x][0]);
+            if (courseNumber.equalsIgnoreCase(arrayOfGrades[x][0])) {
+               // System.out.println("TRUE");
+                return arrayOfGrades[x][1];
             }
         }
         return "Not Taken Yet";

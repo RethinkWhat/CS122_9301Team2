@@ -1,8 +1,14 @@
+package prog2.finalsgroup01;
+
 public class CourseGrade extends Course {
     private int grade;
 
     public CourseGrade(Course courseObject, int grade) {
         super(courseObject);
+        this.grade = grade;
+    }
+
+    public CourseGrade() {
         this.grade = grade;
     }
 
