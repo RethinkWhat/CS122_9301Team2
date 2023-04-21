@@ -20,4 +20,5 @@ public class CourseGrade extends Course {
         this.grade = grade;
     }
 
+
 }

@@ -4,9 +4,9 @@ import java.io.*;
 import java.util.Scanner;
 
 public class RunApplicationNew {
-    private Scanner keyboard = new Scanner(System.in);
-    private Scanner inputReader;
-    private PrintWriter printerToFile;
+    private static Scanner keyboard = new Scanner(System.in);
+    private static Scanner inputReader;
+    private static PrintWriter printerToFile;
 
     public Course courseObject;
 
@@ -132,14 +132,14 @@ public class RunApplicationNew {
     }
 
     // ---------------------------------------------------- CASE 1 & CASE 2 Shared Code ----------------------------------------------------
-    public void requestYearAndTerm(boolean grades, String user) throws FileNotFoundException{
+    public void requestYearAndTerm(boolean grades, String user) throws FileNotFoundException, IOException{
         int year = requestInt("Year: ", 1,3);
         int term = requestInt("Term: ", 1,3);
         String fileLocation = fileName(year,term);
         displaySubjects(fileLocation, grades, user);
     }
 
-    public void displaySubjects(String fileLocation, boolean grades, String user) throws FileNotFoundException{
+    public void displaySubjects(String fileLocation, boolean grades, String user) throws FileNotFoundException, IOException{
         String[] yearAndTerm;
         inputReader = new Scanner(new FileReader(fileLocation));
         System.out.println("_______________________________________________________________________________________________________________________________________________________________________________");
@@ -175,55 +175,93 @@ public class RunApplicationNew {
     }
 
     // ---------------------------------------------------- CASE 2 ----------------------------------------------------
-    public void displayCourseListAndStudentGrades(String courseFileLocation, String user) throws FileNotFoundException {
-        CourseGrade courseGradeObject;
-        String grade;
-        int count=0;
+    public void displayCourseListAndStudentGrades(String courseFileLocation, String user) throws FileNotFoundException, IOException {
+        CourseGrade courseGradeObject= new CourseGrade();
+        Course courseObject;
+        CourseGrade courseList[] = new CourseGrade[getNumberOfLinesInTextFile(courseFileLocation)-1];
         int x =0;
-
+        int count =0;
+        String[] arrayOfElementsCourse;
+        String[] arrayOfElementsGrade = new String[2];
         System.out.printf("%5s%-30s%-110s%-20s%-50s%n", "", "Course No.", "Descriptive Title", "Units", "Grades");
 
-        // To pass in array to array[][]
-        inputReader = new Scanner(new FileReader(user));
+        // Creates a list of all the courses
+        inputReader = new Scanner(new FileReader(courseFileLocation));
+        inputReader.nextLine();
         while(inputReader.hasNextLine()) {
+            arrayOfElementsCourse = inputReader.nextLine().split(",");
+            courseObject = new Course(arrayOfElementsCourse);
+            courseGradeObject = new CourseGrade(courseObject,0);
+            courseList[count] = courseGradeObject;
             count++;
-            inputReader.next();
         }
-        String[][] arrayOfGrades = new String[count][1];
-        inputReader.close();
 
+
+        // User Grade file
         inputReader = new Scanner(new FileReader(user));
-        inputReader.next();
-        while(inputReader.hasNextLine()) { /** This is where it's messing up */
-            arrayOfGrades[x] = inputReader.nextLine().split(",");
+        while(inputReader.hasNextLine()) {  // Reads from user file
+            arrayOfElementsGrade = inputReader.nextLine().split(",");    // Splits course no, and grade
+            courseObject = getCourseUsingSearchKey(arrayOfElementsGrade[0], courseList);  // creates a course object // ERROR
+            courseGradeObject = new CourseGrade(courseObject, Integer.parseInt(arrayOfElementsGrade[1]));
+            courseList[x] = courseGradeObject;
             x++;
+
         }
+
         inputReader.close();
 
         inputReader = new Scanner(new FileReader(courseFileLocation));
         inputReader.nextLine();
-        while (inputReader.hasNextLine()) {
-            arrayOfInfo = inputReader.nextLine().split(",");
-            courseObject = new Course(arrayOfInfo);
-            grade = checkIfGradeExistsForSubject(courseObject.getCourseNumber(), arrayOfGrades);
-            System.out.printf("%5s%-30s%-110s%-20s%-110s%n", "",
-                    courseObject.getCourseNumber(),
-                    courseObject.getDescriptiveTitle(),
-                    courseObject.getUnits(),
-                    grade);
-        }
-        //inputReader.close();
-    }
-
-    public String checkIfGradeExistsForSubject(String courseNumber, String[][] arrayOfGrades) {
-        for(int x =0; arrayOfGrades[0].length >=x;x++) {
-          //  System.out.println(arrayOfGrades[x][0]);
-            System.out.println(courseNumber + " Compared to " + arrayOfGrades[x][0]);
-            if (courseNumber.equalsIgnoreCase(arrayOfGrades[x][0])) {
-               // System.out.println("TRUE");
-                return arrayOfGrades[x][1];
+        x=0;
+        while(inputReader.hasNextLine()) {
+            arrayOfElementsCourse = inputReader.nextLine().split(",");
+            if (arrayOfElementsCourse[0] != courseGradeObject.getCourseNumber()) {
+                courseObject = new Course(arrayOfElementsCourse);
+                courseGradeObject = new CourseGrade(courseObject, 0);
+                courseList[x] = courseGradeObject;
+                x++;
+            }
+            else {
+                courseList[x].setGrade(Integer.valueOf(arrayOfElementsGrade[1]));
             }
         }
-        return "Not Taken Yet";
+        inputReader.close();
+
+
+        displaySubjectsNow(courseList);
+    }
+
+    public Course getCourseUsingSearchKey(String courseNo, CourseGrade[] courseList) throws IOException {
+        String[] arrayOfElements;
+        CourseGrade courseObject = new CourseGrade();
+        for (Course course: courseList) {
+            if ( course.getCourseNumber() == courseNo) {
+                return courseObject;
+            }
+        }
+        return courseObject;
+    }
+
+    public int getNumberOfLinesInTextFile(String courseFileLocation) throws IOException{
+        inputReader = new Scanner(new FileReader(courseFileLocation));
+        int count = 0;
+        while (inputReader.hasNextLine()){
+            count++;
+            inputReader.nextLine();
+        }
+        inputReader.close();
+        return count;
+
+    }
+
+    public void displaySubjectsNow(CourseGrade[] courseList){
+        for (int x=0; x<courseList.length; x++) {
+            System.out.printf("%5s%-30s%-110s%-20s%-50s%n", "",
+                    courseList[x].getCourseNumber(),
+                    courseList[x].getDescriptiveTitle(),
+                    courseList[x].getUnits(),
+                    courseList[x].getGrade());
+        }
+
     }
 }
