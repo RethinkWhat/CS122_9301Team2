@@ -20,5 +20,8 @@ public class CourseGrade extends Course {
         this.grade = grade;
     }
 
-
+    @Override
+    public String toString() {
+        return super.toString() + "," + this.getGrade();
+    }
 }

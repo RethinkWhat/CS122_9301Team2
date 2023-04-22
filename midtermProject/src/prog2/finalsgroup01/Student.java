@@ -1,10 +1,10 @@
 package prog2.finalsgroup01;
 
 public class Student{
-    String firstName;
-    String lastName;
-    CourseGrade courseGrade[];
-    String idNumber;
+    private String firstName;
+    private String lastName;
+    private CourseGrade courseGrade[];
+    private String idNumber;
 
 
     public Student( String idNumber, String firstName, String lastName, CourseGrade[] courseAndGrades) {
@@ -22,12 +22,8 @@ public class Student{
         this.courseGrade = new CourseGrade[0];
     }
 
-/*    @Override
+    @Override
     public String toString() {
-        String stringToBeDisplayed = "";
-        for (int index =0; this.getCourseArray() > index; index++)
-            stringToBeDisplayed += this;
-        return stringToBeDisplayed;
-    }*/
-
+        return this.idNumber+","+this.firstName+ " " + this.lastName;
+    }
 }

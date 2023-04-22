@@ -17,6 +17,12 @@ public class Course {
         this.units = units;
     }
 
+    public Course(String courseNumber) {
+        this.courseNumber = courseNumber;
+        this.descriptiveTitle = "Default Title";
+        this.units = 0;
+    }
+
     public Course (String[] courseList) {
         this.courseNumber = courseList[0];
         this.descriptiveTitle = courseList[1];
