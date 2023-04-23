@@ -62,7 +62,7 @@ public class RunApplication {
         System.out.println("-----------------------------------------------------------------");
         System.out.println("Enter your SLU ID number:");
         System.out.println("-----------------------------------------------------------------");
-        System.out.print("--> ");
+        System.out.print("      --> ");
         return keyboard.nextLine();
     }
     // Check whether ID Number exists
@@ -218,8 +218,22 @@ public class RunApplication {
     // ---------------------------------------------------- CASE 1 & CASE 2 Shared Code ----------------------------------------------------
     // Method for user to request the year and term they'd like to check the course offerings of
     public String requestYearAndTerm(boolean grades, String user) throws FileNotFoundException, IOException{
-        int year = requestInt("Year: ", 1,3);
-        int term = requestInt("Term: ", 1,3);
+        System.out.println("Year:");
+        System.out.println("    <1> First Year");
+        System.out.println("    <2> Second Year");
+        System.out.println("    <3> Third Year");
+        System.out.println("    <4> Fourth Year");
+        int year = requestInt("     --> ", 1,4);
+        int term;
+        System.out.println("Term: ");
+        System.out.println("    <1> First Semester");
+        System.out.println("    <2> Second Semester");
+        if (year!= 4) {
+            System.out.println("    <3> Short Term");
+            term = requestInt("     --> ", 1, 3);
+        }
+        else
+            term = requestInt("     --> ", 1,2);
         String fileLocation = fileName(year,term);
         displaySubjects(fileLocation, grades, user);
         return fileLocation;
@@ -356,7 +370,7 @@ public class RunApplication {
     public void enterGrade(String courseFileLocation, String userFileLocation) throws IOException {
         // Holds all the courses
         ArrayList<Course> courseList = createCourseList(courseFileLocation);
-        CourseGrade editedCourse = acceptCourseNumber(courseFileLocation, userFileLocation);  //
+        CourseGrade editedCourse = acceptCourseNumber(courseFileLocation, userFileLocation, true);  //
         String[] lineRead;
         File temp = new File("midtermProject/src/prog2/finalsgroup01/students/temp.txt");
 
@@ -409,7 +423,7 @@ public class RunApplication {
         
     }
 
-    public CourseGrade acceptCourseNumber(String courseFileLocation, String userFileLocation) throws IOException {
+    public CourseGrade acceptCourseNumber(String courseFileLocation, String userFileLocation, boolean setGrade) throws IOException {
         String courseNumber;
         int grade;
 
@@ -427,9 +441,11 @@ public class RunApplication {
 
             for (CourseGrade course: courseAndGradeList) {
                 if (courseNumber.equalsIgnoreCase(course.getCourseNumber())) {
-                    System.out.println("Enter the grade of the subject: ");
-                    grade =requestInt("--> ", 65,99);
-                    course.setGrade(grade);
+                    if (setGrade) {
+                        System.out.println("Enter the grade of the subject: ");
+                        grade = requestInt("--> ", 65, 99);
+                        course.setGrade(grade);
+                    }
                     return course;
                 }
             }
@@ -438,12 +454,23 @@ public class RunApplication {
     }
 
     // ---------------------------------------------------- CASE 4 ----------------------------------------------------
-    public void editCourse() {
+    public void editCourse(String courseFileLocation, String userFileLocation) throws IOException {
+        CourseGrade editedCourse = acceptCourseNumber(courseFileLocation, userFileLocation, false);  //
         System.out.println("What would you like to edit?");
         System.out.println("    <1> Course No.");
         System.out.println("    <2> Descriptive Title");
         System.out.println("    <3> Units");
         int choice = requestInt("   ->", 1,3);
+        String[] lineRead;
+        File temp = new File("midtermProject/src/prog2/finalsgroup01/students/temp.txt");
+
+        // Holds all the courses
+        ArrayList<Course> courseList = createCourseList(courseFileLocation);
+        // Holds all the courses with grades
+        ArrayList<CourseGrade> gradeList = createGradeCourseList(courseList, userFileLocation);
+        // Holds the combination of grades and all courses
+        ArrayList<CourseGrade> courseAndGradeList = combineCourseAndGradeList(courseList, gradeList);
+
         switch (choice) {
             case 1:
 
