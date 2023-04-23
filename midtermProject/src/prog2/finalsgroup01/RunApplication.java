@@ -25,7 +25,8 @@ public class RunApplication {
 
     // Method to hold executing program
     public void execute() throws IOException{
-        final String user = getDataFile();
+        boolean accountExists = existingAccount();
+        final String user = getDataFile(accountExists);
         RunApplication program;
         do {
             try {
@@ -44,11 +45,11 @@ public class RunApplication {
     public boolean existingAccount() {
         System.out.println("");
         System.out.println(" -----------------------------------------------------------------");
-        System.out.println("        Do you have an existing record? ");
-        System.out.println("                <1> Yes, I do.");
-        System.out.println("                <2> No, I do not. Please create one for me.");
+        System.out.println("Do you have an existing record? ");
+        System.out.println("    <1> Yes, I do.");
+        System.out.println("    <2> No, I do not. Please create one for me.");
         System.out.println(" -----------------------------------------------------------------");
-        int input = requestInt("        --> ",1,2);
+        int input = requestInt("    --> ",1,2);
         if (input == 1) {
             return true;
         }
@@ -58,7 +59,9 @@ public class RunApplication {
     // Method to request SLU ID Number
     public String requestIdNumber(){
         System.out.println();
-        System.out.println("Enter your SLU ID number");
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println("Enter your SLU ID number:");
+        System.out.println("-----------------------------------------------------------------");
         System.out.print("--> ");
         return keyboard.nextLine();
     }
@@ -86,8 +89,7 @@ public class RunApplication {
     }
 
     // Get data file when user file exists
-    public String getDataFile() throws FileNotFoundException, IOException {
-        boolean accountExists = existingAccount();
+    public String getDataFile(boolean accountExists) throws FileNotFoundException, IOException {
         String idNumber = requestIdNumber();
         String fileLocation = "midtermProject/src/prog2/finalsgroup01/students/" + idNumber;
         if (accountExists) {
@@ -102,32 +104,73 @@ public class RunApplication {
     public void myChecklistManagement() {
         System.out.println("");
         System.out.println("My Checklist Management");
-        System.out.println("<1> Show subjects for a school term");
-        System.out.println("<2> Show subjects with grades for each term");
-        System.out.println("<3> Enter grades for subjects recently finished");
-        System.out.println("<4> Edit a course");
-        System.out.println("<5> Quit");
+        System.out.println("    <1> Show subjects for a school term");
+        System.out.println("    <2> Show subjects with grades for each term");
+        System.out.println("    <3> Enter grades for subjects recently finished");
+        System.out.println("    <4> Edit a course");
+        System.out.println("    <5> Quit");
         System.out.println("");
     }
 
+    public void myLimitedCheckListManagement() {
+        System.out.println("");
+        System.out.println("    My Checklist Management");
+        System.out.println("        <1> Show subjects for a school term");
+        System.out.println("        <2> Enter grades for subjects recently finished");
+        System.out.println("        <3> Quit");
+        System.out.println("");
+    }
+
+
     // Method to handle user choice in main menu
     public void run(String user) throws FileNotFoundException, IOException {
-        myChecklistManagement();
-        int choice = requestInt("Enter a number: ", 1,5);
-        switch(choice) {
-            case 1:
-                requestYearAndTerm(false, user);
-                break;
-            case 2:
-                requestYearAndTerm(true, user);
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                System.exit(0);
-                break;
+        inputReader = new Scanner(new File(user));
+        inputReader.nextLine();
+        boolean fileIsNotEmpty = inputReader.hasNextLine();
+
+        int choice;
+        String prompt = "Enter a number: ";
+        if (fileIsNotEmpty) {
+            myChecklistManagement();
+            choice = requestInt(prompt, 1, 5);
+            switch (choice) {
+                case 1: // Display the course
+                    requestYearAndTerm(false, user);
+                    pressKey("Press enter to return to main menu");
+                    break;
+                case 2: // Display the user grade and course
+                    requestYearAndTerm(true, user);
+                    pressKey("Press enter to return to main menu");
+                    break;
+                case 3: // Enter user grade
+                    System.out.println("");
+                    System.out.println("Kindly enter the year and term the subject whose grade you would like to edit is offered in.");
+                    enterGrade(requestYearAndTerm(true,user), user);
+                    pressKey("Grade has been edited, Press enter to return to menu.");
+                    break;
+                case 4: // Edit course
+                    break;
+                case 5: //exit
+                    System.exit(0);
+                    break;
+            }
+        } else {
+            myLimitedCheckListManagement();
+            choice = requestInt(prompt,1,3);
+            switch (choice) {
+                case 1: // Display the course;
+                    requestYearAndTerm(false, user);
+                    pressKey("Press enter to return to main menu");
+                    break;
+                case 2: // Enter user grade
+                    System.out.println("");
+                    System.out.println("Kindly enter the year and term the subject whose grade you would like to edit is offered in.");
+                    enterGrade(requestYearAndTerm(true,user), user);
+                    break;
+                case 3: // exit
+                    System.exit(0);
+                    break;
+            }
         }
     }
 
@@ -174,11 +217,12 @@ public class RunApplication {
 
     // ---------------------------------------------------- CASE 1 & CASE 2 Shared Code ----------------------------------------------------
     // Method for user to request the year and term they'd like to check the course offerings of
-    public void requestYearAndTerm(boolean grades, String user) throws FileNotFoundException, IOException{
+    public String requestYearAndTerm(boolean grades, String user) throws FileNotFoundException, IOException{
         int year = requestInt("Year: ", 1,3);
         int term = requestInt("Term: ", 1,3);
         String fileLocation = fileName(year,term);
         displaySubjects(fileLocation, grades, user);
+        return fileLocation;
     }
 
     // Method to handle displaying all the subjects to the user
@@ -197,7 +241,6 @@ public class RunApplication {
             displayCourseListAndStudentGrades(fileLocation, user);
         }
         System.out.println("__________________________________________________________________________________________________________________________________________________________________________________________");
-        pressKey("Press enter to return to main menu");
     }
     // ---------------------------------------------------- END OF CASE 1 & 2 Shared Code ----------------------------------------------------
 
@@ -205,23 +248,20 @@ public class RunApplication {
     // ---------------------------------------------------- CASE 1 ----------------------------------------------------
     // Sub method of display subjects which handles only displaying courses
     public void displayOnlyCourseList(String fileLocation) throws FileNotFoundException{
-        inputReader = new Scanner(new FileReader(fileLocation));
-        System.out.printf("%5s%-30s%-110s%-20s%n", "", "Course No.", "Descriptive Title", "Units");
-        inputReader.nextLine();
-        while (inputReader.hasNextLine()) {
-            arrayOfInfo = inputReader.nextLine().split(",");
-            courseObject = new Course(arrayOfInfo);
-            System.out.printf("%5s%-30s%-110s%-20s%-110s%n", "",
-                    courseObject.getCourseNumber(),
-                    courseObject.getDescriptiveTitle(),
-                    courseObject.getUnits());
+        ArrayList<Course> courseList = createCourseList(fileLocation);
+        System.out.printf("%-30s%-110s%-20s%n", "Course No.", "Descriptive Title", "Units");
+        for (Course course: courseList) {
+            System.out.printf("%-30s%-110s%-20s%n",
+                    course.getCourseNumber(),
+                    course.getDescriptiveTitle(),
+                    course.getUnits());
         }
     }
 
     // ---------------------------------------------------- CASE 2 ----------------------------------------------------
    // Sub menu of display subjects which handles displaying courses AND GRADES
     public void displayCourseListAndStudentGrades(String courseFileLocation, String userFileLocation) throws FileNotFoundException, IOException {
-        System.out.printf("%5s%-30s%-110s%-20s%-30s%n", "", "Course No.", "Descriptive Title", "Units", "Grades");
+        System.out.printf("%-30s%-110s%-20s%-30s%n", "Course No.", "Descriptive Title", "Units", "Grades");
         // Holds all the courses
         ArrayList<Course> courseList = createCourseList(courseFileLocation);
 
@@ -237,27 +277,13 @@ public class RunApplication {
                 grade = "Not Taken yet";
             else
                 grade = String.valueOf(courseAndGradeList.get(x).getGrade()) ;
-            System.out.printf("%5s%-30s%-110s%-20s%-110s%n", "",
+            System.out.printf("%-30s%-110s%-20s%-110s%n",
                     courseAndGradeList.get(x).getCourseNumber(),
                     courseAndGradeList.get(x).getDescriptiveTitle(),
                     courseAndGradeList.get(x).getUnits(),
                     grade
                     );
         }
-
-
-    }
-
-    //Method to get the number of courses in a specific file
-    public int getNumberOfCourseInFile(String courseFileLocation) throws FileNotFoundException {
-        inputReader = new Scanner(new FileReader(courseFileLocation));
-        int x = 0;
-        while(inputReader.hasNextLine()) {
-            x++;
-            inputReader.nextLine();
-        }
-        inputReader.close();
-        return x;
     }
 
     // Method to handle creating a list of all the courses
@@ -300,51 +326,135 @@ public class RunApplication {
     // Method to look for the details of a course given just the courseNumber.
     public CourseGrade lookForCourseDetails(Course searchIndex, ArrayList<Course> courseList) throws FileNotFoundException{
         Course courseObj;
-        for (int x = 0; x < courseList.size()-1; x++) {
+        for (int x = 0; x < courseList.size(); x++) {
             if(courseList.get(x).getCourseNumber().equalsIgnoreCase(searchIndex.getCourseNumber())) {
                 courseObj = new Course(courseList.get(x));;
                 return new CourseGrade(courseObj,0);    //Sets grade to 0 but creates a courseGrade object
             }
-
         }
         return new CourseGrade();
     }
 
     public ArrayList<CourseGrade> combineCourseAndGradeList(ArrayList<Course> courseList, ArrayList<CourseGrade> gradeList){
         ArrayList<CourseGrade> arrayToBeReturned = new ArrayList<>();
-        CourseGrade courseGradeObject;
-        ArrayList<String> listOfCourses = new ArrayList<>();
-
-        for(Course course: courseList){
+        for(Course course: courseList) {
             boolean isMatch = false;
-            for(CourseGrade grade: gradeList){
-                if(Objects.equals(course.getCourseNumber(), grade.getCourseNumber())) {
+            for (CourseGrade grade : gradeList) {
+                if (Objects.equals(course.getCourseNumber(), grade.getCourseNumber())) {
                     arrayToBeReturned.add(grade);
                     isMatch = true;
                     break;
                 }
             }
-                            if(!isMatch){
-                                arrayToBeReturned.add(new CourseGrade(course, -1));
-                            }
+            if (!isMatch)
+                arrayToBeReturned.add(new CourseGrade(course, -1));
         }
-
-   /*     for(Iterator<Course> c = courseList.iterator(); c.hasNext();) {
-            Course course = c.next();
-                        for(Iterator<CourseGrade> cg = gradeList.iterator(); cg.hasNext();) {
-                            CourseGrade grade = cg.next();
-                            if(Objects.equals(grade.getCourseNumber(), course.getCourseNumber())){
-                               arrayToBeReturned.add(grade);
-                               temp.remove(course);
-                               break;
-                            }
-                        }
-        }
-        for(Course course: temp){
-            arrayToBeReturned.add(new CourseGrade(course, -1));
-        }  */
-
         return arrayToBeReturned;
+    }
+
+    // ---------------------------------------------------- CASE 3 ----------------------------------------------------
+    public void enterGrade(String courseFileLocation, String userFileLocation) throws IOException {
+        // Holds all the courses
+        ArrayList<Course> courseList = createCourseList(courseFileLocation);
+        CourseGrade editedCourse = acceptCourseNumber(courseFileLocation, userFileLocation);  //
+        String[] lineRead;
+        File temp = new File("midtermProject/src/prog2/finalsgroup01/students/temp.txt");
+
+
+        inputReader = new Scanner(new FileReader(userFileLocation));            // Reads all the grades in user file
+        printerToFile = new PrintWriter(new FileWriter(temp, true));    // Writer to the temporary file
+
+        String user = inputReader.nextLine();                                   // Read details of user from first line
+        printerToFile.println(user);
+        boolean gradeForCourseExists = false;
+
+        while (inputReader.hasNextLine()) {                                     // While elements exist in the user file
+            lineRead = inputReader.nextLine().split(",");
+
+            // For all values where course number not equal the course number of the value entered print to temp file
+            if (lineRead[0].equalsIgnoreCase(editedCourse.getCourseNumber())) {
+                // don't print to file, since we want to print the new CourseGrade object
+                gradeForCourseExists = true; // let the program know that a previous grade was already printed to file with the said course number
+                
+            } else {
+                printerToFile.println(lineRead[0] + "," + lineRead[1]);   //print user file content to temp file
+                gradeForCourseExists = false;
+            }
+        } //end of while loop
+
+        if (gradeForCourseExists) {
+            printerToFile.println(editedCourse.getCourseNumber() + "," + editedCourse.getGrade());
+            inputReader.close();
+            printerToFile.close();
+
+            printerToFile = new PrintWriter(new FileWriter(userFileLocation, false));
+            inputReader = new Scanner(new FileReader(temp));
+            while (inputReader.hasNextLine()) {
+                printerToFile.println(inputReader.nextLine());
+            }
+
+
+        } else {
+            printerToFile = new PrintWriter(new FileWriter(userFileLocation, true));
+            printerToFile.println(editedCourse.getCourseNumber()+","+editedCourse.getGrade());
+            inputReader.close();
+            printerToFile.close();
+        }
+
+
+        printerToFile.close();
+        inputReader.close();
+        temp.delete();
+
+        
+    }
+
+    public CourseGrade acceptCourseNumber(String courseFileLocation, String userFileLocation) throws IOException {
+        String courseNumber;
+        int grade;
+        // Holds all the courses
+        ArrayList<Course> courseList = createCourseList(courseFileLocation);
+
+        // Holds all the courses with grades
+        ArrayList<CourseGrade> gradeList = createGradeCourseList(courseList, userFileLocation);
+
+        // Holds the combination of grades and all courses
+        ArrayList<CourseGrade> courseAndGradeList = combineCourseAndGradeList(courseList, gradeList);
+
+        do {
+            System.out.println("Enter the course number of the grade you would like to input");
+            System.out.print("    --> ");
+            courseNumber = keyboard.nextLine().toUpperCase();
+
+            for (CourseGrade course: courseAndGradeList) {
+                if (courseNumber.equalsIgnoreCase(course.getCourseNumber())) {
+                    System.out.println("Enter the grade of the subject: ");
+                    grade =requestInt("--> ", 65,99);
+                    course.setGrade(grade);
+                    return course;
+                }
+            }
+            System.out.println("Enter an existing course number");
+        } while(true);
+    }
+
+    // ---------------------------------------------------- CASE 4 ----------------------------------------------------
+    public void editCourse() {
+        System.out.println("What would you like to edit?");
+        System.out.println("    <1> Course No.");
+        System.out.println("    <2> Descriptive Title");
+        System.out.println("    <3> Units");
+        int choice = requestInt("   ->", 1,3);
+        switch (choice) {
+            case 1:
+
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
+
     }
 
 }
