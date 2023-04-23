@@ -412,12 +412,11 @@ public class RunApplication {
     public CourseGrade acceptCourseNumber(String courseFileLocation, String userFileLocation) throws IOException {
         String courseNumber;
         int grade;
+
         // Holds all the courses
         ArrayList<Course> courseList = createCourseList(courseFileLocation);
-
         // Holds all the courses with grades
         ArrayList<CourseGrade> gradeList = createGradeCourseList(courseList, userFileLocation);
-
         // Holds the combination of grades and all courses
         ArrayList<CourseGrade> courseAndGradeList = combineCourseAndGradeList(courseList, gradeList);
 
@@ -447,7 +446,6 @@ public class RunApplication {
         int choice = requestInt("   ->", 1,3);
         switch (choice) {
             case 1:
-
                 break;
             case 2:
                 break;
