@@ -149,6 +149,7 @@ public class RunApplication {
                     pressKey("Grade has been edited, Press enter to return to menu.");
                     break;
                 case 4: // Edit course
+                    editCourse(user);
                     break;
                 case 5: //exit
                     System.exit(0);
@@ -370,7 +371,8 @@ public class RunApplication {
     public void enterGrade(String courseFileLocation, String userFileLocation) throws IOException {
         // Holds all the courses
         ArrayList<Course> courseList = createCourseList(courseFileLocation);
-        CourseGrade editedCourse = acceptCourseNumber(courseFileLocation, userFileLocation, true);  //
+        String prompt = "Enter the course number of the grade you would like to input";
+        CourseGrade editedCourse = acceptCourseNumber(courseFileLocation, userFileLocation, true, prompt);  //
         String[] lineRead;
         File temp = new File("midtermProject/src/prog2/finalsgroup01/students/temp.txt");
 
@@ -423,7 +425,7 @@ public class RunApplication {
         
     }
 
-    public CourseGrade acceptCourseNumber(String courseFileLocation, String userFileLocation, boolean setGrade) throws IOException {
+    public CourseGrade acceptCourseNumber(String courseFileLocation, String userFileLocation, boolean setGrade, String prompt) throws IOException {
         String courseNumber;
         int grade;
 
@@ -435,7 +437,7 @@ public class RunApplication {
         ArrayList<CourseGrade> courseAndGradeList = combineCourseAndGradeList(courseList, gradeList);
 
         do {
-            System.out.println("Enter the course number of the grade you would like to input");
+            System.out.println(prompt);
             System.out.print("    --> ");
             courseNumber = keyboard.nextLine().toUpperCase();
 
@@ -454,8 +456,11 @@ public class RunApplication {
     }
 
     // ---------------------------------------------------- CASE 4 ----------------------------------------------------
-    public void editCourse(String courseFileLocation, String userFileLocation) throws IOException {
-        CourseGrade editedCourse = acceptCourseNumber(courseFileLocation, userFileLocation, false);  //
+    public void editCourse(String userFileLocation) throws IOException {
+        String courseFileLocation = requestYearAndTerm(false, userFileLocation);
+        String prompt = "Enter the course number of the course you would like to edit";
+        Course editedCourse = acceptCourseNumber(courseFileLocation, userFileLocation, false, prompt);  //
+        requestYearAndTerm(false, userFileLocation);
         System.out.println("What would you like to edit?");
         System.out.println("    <1> Course No.");
         System.out.println("    <2> Descriptive Title");
@@ -464,23 +469,84 @@ public class RunApplication {
         String[] lineRead;
         File temp = new File("midtermProject/src/prog2/finalsgroup01/students/temp.txt");
 
+        editCourseTextFile(editedCourse,choice,courseFileLocation);
+    }
+
+
+    public void editCourseTextFile(Course editedCourse, int choice, String courseFileLocation) throws IOException {
+
         // Holds all the courses
         ArrayList<Course> courseList = createCourseList(courseFileLocation);
-        // Holds all the courses with grades
-        ArrayList<CourseGrade> gradeList = createGradeCourseList(courseList, userFileLocation);
-        // Holds the combination of grades and all courses
-        ArrayList<CourseGrade> courseAndGradeList = combineCourseAndGradeList(courseList, gradeList);
 
-        switch (choice) {
-            case 1:
+        String[] lineRead;
+        File temp = new File("midtermProject/src/prog2/finalsgroup01/students/temp.txt");
 
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
+        inputReader = new Scanner(new FileReader(courseFileLocation));          // Reads all the courses in Courses file
+        printerToFile = new PrintWriter(new FileWriter(temp, true));    // Writer to the temporary file
+
+        String yearAndTerm = inputReader.nextLine();                            // Read details of term from first line
+        printerToFile.println(yearAndTerm);
+
+        boolean courseToBeEditedLocated = false;
+
+        while (inputReader.hasNextLine()) {                                     // While elements exist in the Course file
+            lineRead = inputReader.nextLine().split(",");
+
+            // For all values where course number not equal the course number of the value entered print to temp file
+            if (lineRead[0].equalsIgnoreCase(editedCourse.getCourseNumber())) {
+
+                // don't print to file, since we want to print the new Course object
+                courseToBeEditedLocated = true; // let the program know that the Course line has been located
+
+            } else {
+                printerToFile.println(lineRead[0] + "," + lineRead[1]);   //print user file content to temp file
+                courseToBeEditedLocated = false;
+            }
+        } //end of while loop
+
+        String courseNumber = editedCourse.getCourseNumber();
+        String courseDescriptiveTitle = editedCourse.getDescriptiveTitle();
+        int courseUnits = editedCourse.getUnits();
+
+        if (courseToBeEditedLocated) {
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter the new course number: ");
+                    System.out.print("   -->");
+                    courseNumber = keyboard.nextLine();
+                    break;
+                case 2:
+                    System.out.println("Enter the new course description: ");
+                    System.out.print("   -->");
+                    courseDescriptiveTitle = keyboard.nextLine();
+                    break;
+                case 3:
+                    System.out.println("Enter the new course units: ");
+                    courseUnits = requestInt("    -->", 1, 3);
+                    break;
+            }
         }
+            printerToFile.println(courseNumber+","+courseDescriptiveTitle+","+courseUnits);
+            inputReader.close();
+            printerToFile.close();
+
+            printerToFile = new PrintWriter(new FileWriter(courseFileLocation, false));
+            inputReader = new Scanner(new FileReader(temp));
+            while (inputReader.hasNextLine()) {
+                printerToFile.println(inputReader.nextLine());
+            }
+
+
+
+        printerToFile.close();
+        inputReader.close();
+        temp.delete();
+
 
     }
+
+
+
 
 }
