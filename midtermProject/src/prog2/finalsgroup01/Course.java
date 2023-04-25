@@ -26,7 +26,7 @@ public class Course {
     public Course (String[] courseList) {
         this.courseNumber = courseList[0];
         this.descriptiveTitle = courseList[1];
-        this.units= Integer.valueOf(courseList[2]);
+        this.units= Integer.parseInt(courseList[2]);
     }
 
     public Course(Course courseObject) {
