@@ -276,7 +276,7 @@ public class RunApplication {
     // ---------------------------------------------------- CASE 2 ----------------------------------------------------
    // Sub menu of display subjects which handles displaying courses AND GRADES
     public void displayCourseListAndStudentGrades(String courseFileLocation, String userFileLocation) throws FileNotFoundException, IOException {
-        System.out.printf("%-30s%-110s%-20s%-30s%n", "Course No.", "Descriptive Title", "Units", "Grades");
+        System.out.printf("%-30s%-110s%-20s%-30s%-30s%n", "Course No.", "Descriptive Title", "Units", "Grades", "Remarks");
         // Holds all the courses
         ArrayList<Course> courseList = createCourseList(courseFileLocation);
 
@@ -292,11 +292,12 @@ public class RunApplication {
                 grade = "Not Taken yet";
             else
                 grade = String.valueOf(courseAndGradeList.get(x).getGrade()) ;
-            System.out.printf("%-30s%-110s%-20s%-110s%n",
+            System.out.printf("%-30s%-110s%-20s%-30s%-30s%n",
                     courseAndGradeList.get(x).getCourseNumber(),
                     courseAndGradeList.get(x).getDescriptiveTitle(),
                     courseAndGradeList.get(x).getUnits(),
-                    grade
+                    grade,
+                    courseAndGradeList.get(x).getRemarks()
                     );
         }
     }
@@ -332,6 +333,10 @@ public class RunApplication {
             courseGradeObject = lookForCourseDetails(searchIndex, courseList); // Look for the course details given the courseNumber
             gradesList.add(courseGradeObject);
             gradesList.get(x).setGrade(Integer.parseInt(lineRead[1]));
+            if(gradesList.get(x).getGrade() < 75)
+                gradesList.get(x).setRemarks("FAILED");
+            else
+                gradesList.get(x).setRemarks("PASSED");
             x++;
         }
         inputReader.close();
@@ -412,7 +417,7 @@ public class RunApplication {
 
         } else {
             printerToFile = new PrintWriter(new FileWriter(userFileLocation, true));
-            printerToFile.println(editedCourse.getCourseNumber()+","+editedCourse.getGrade());
+            printerToFile.println(editedCourse.getCourseNumber()+","+editedCourse.getGrade()+ ","+ editedCourse.getRemarks());
             inputReader.close();
             printerToFile.close();
         }
@@ -446,7 +451,12 @@ public class RunApplication {
                     if (setGrade) {
                         System.out.println("Enter the grade of the subject: ");
                         grade = requestInt("--> ", 65, 99);
+                        if(grade<75)
+                            course.setRemarks("Failed");
+                        else
+                            course.setRemarks("Passed");
                         course.setGrade(grade);
+
                     }
                     return course;
                 }
