@@ -2,6 +2,13 @@ package prog2.finalsgroup01;
 
 public class CourseGrade extends Course {
     private int grade;
+    private String remarks;
+
+    public String getRemarks() {return remarks;}
+
+    public void setRemarks(String remarks) {this.remarks = remarks;}
+
+
 
     public CourseGrade(Course courseObject, int grade) {
         super(courseObject);
